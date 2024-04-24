@@ -22,8 +22,6 @@ RUN install-php-extensions \
 #install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-RUN apk add --no-cache libzip-dev && docker-php-ext-configure zip && docker-php-ext-install zip
-
 # Add ini-files
 COPY ./.deploy/local/php.ini /usr/local/etc/php/conf.d/40-custom.ini
 
