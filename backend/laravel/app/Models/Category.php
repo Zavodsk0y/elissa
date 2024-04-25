@@ -2,13 +2,18 @@
 
 namespace App\Models;
 
+use app\Data\Category\CategoryData;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Spatie\LaravelData\WithData;
 
 class Category extends Model
 {
     use HasFactory;
+    use WithData;
+
+    protected string $dataClass = CategoryData::class;
 
     protected $fillable = [
         'name'
