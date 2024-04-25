@@ -3,6 +3,7 @@
 namespace app\Transitions\Request;
 
 use app\Enums\Request\RequestStatus;
+use App\Models\Request;
 
 class ConfirmedToDone implements RequestTransition
 {
@@ -12,6 +13,7 @@ class ConfirmedToDone implements RequestTransition
         $request->status = RequestStatus::Done->value;
         $request->updated_at = now();
         $request->save();
-        // TODO: Implement execute() method.
+
+        return $request->refresh();
     }
 }
