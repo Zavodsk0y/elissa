@@ -26,7 +26,7 @@ class PartController extends Controller
         return CreatePartAction::execute($data);
     }
 
-    public function show(Part $part)
+    public function show(Part $part): PartShowData
     {
         return PartShowData::fromModel($part);
     }
