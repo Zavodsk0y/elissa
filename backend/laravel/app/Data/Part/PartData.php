@@ -12,12 +12,14 @@ use Spatie\LaravelData\Data;
 class PartData extends Data
 {
     public function __construct(
+        #[IntegerType, Exists('parts', 'id')]
+        public ?int   $id,
         #[IntegerType, Exists('categories', 'id')]
-        public int $categoryId,
+        public int    $categoryId,
         public string $header,
         #[StringType, Max(1000)]
         public string $description,
-        public float $price
+        public float  $price
     )
     {
     }

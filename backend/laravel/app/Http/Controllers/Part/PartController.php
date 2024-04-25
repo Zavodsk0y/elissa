@@ -2,14 +2,13 @@
 
 namespace app\Http\Controllers\Service;
 
-use app\Actions\Part\CreatePartAction;
+use app\Actions\Part\SavePartAction;
 use app\Data\Part\PartData;
 use app\Data\Part\PartShowData;
 use App\Http\Controllers\Controller;
 use App\Models\Part;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Spatie\LaravelData\DataCollection;
 use Spatie\LaravelData\PaginatedDataCollection;
 
 class PartController extends Controller
@@ -23,7 +22,7 @@ class PartController extends Controller
 
     public function store(PartData $data)
     {
-        return CreatePartAction::execute($data);
+        return SavePartAction::execute($data);
     }
 
     public function show(Part $part): PartShowData
@@ -31,9 +30,11 @@ class PartController extends Controller
         return PartShowData::fromModel($part);
     }
 
-    public function update()
+    public function update(Request $request, Part $part)
     {
+        $request->request->add(['id' => $part->id]);
 
+        return SavePartAction::execute(PartData::validateAndCreate($request));
     }
 
     public function delete()
