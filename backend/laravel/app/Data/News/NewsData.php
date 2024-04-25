@@ -10,6 +10,7 @@ use Symfony\Contracts\Service\Attribute\Required;
 class NewsData extends Data
 {
     public function __construct(
+        #[Required, StringType]
         public string $title,
         #[Required, StringType, Max(1000)]
         public string $text
