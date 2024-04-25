@@ -9,15 +9,15 @@ use App\Http\Controllers\Controller;
 use App\Models\Part;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Spatie\LaravelData\PaginatedDataCollection;
 
 class PartController extends Controller
 {
-    public function index(Request $request): JsonResponse
+    public function index(Request $request): Collection
     {
         $paginatedParts = Part::with('category')->paginate(10);
-        $partsData = PartShowData::collect($paginatedParts, PaginatedDataCollection::class);
-        return response()->json($partsData);
+        return PartShowData::collect($paginatedParts, PaginatedDataCollection::class);
     }
 
     public function store(PartData $data)
