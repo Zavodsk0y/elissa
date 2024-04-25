@@ -20,7 +20,7 @@ class PartController extends Controller
         return PartShowData::collect($paginatedParts, PaginatedDataCollection::class);
     }
 
-    public function store(PartData $data)
+    public function store(PartData $data): PartShowData
     {
         return SavePartAction::execute($data);
     }
@@ -30,7 +30,7 @@ class PartController extends Controller
         return PartShowData::fromModel($part);
     }
 
-    public function update(Request $request, Part $part)
+    public function update(Request $request, Part $part): PartShowData
     {
         $request->request->add(['id' => $part->id]);
 

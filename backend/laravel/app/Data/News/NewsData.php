@@ -2,6 +2,7 @@
 
 namespace app\Data\News;
 
+use App\Models\News;
 use Spatie\LaravelData\Attributes\Validation\Max;
 use Spatie\LaravelData\Attributes\Validation\StringType;
 use Spatie\LaravelData\Data;
@@ -16,6 +17,14 @@ class NewsData extends Data
         public string $text
     )
     {
+    }
+
+    public static function fromModel(News $news): NewsData
+    {
+        return new self(
+            $news->title,
+            $news->text
+        );
     }
 
     public static function attributes(...$args): array

@@ -2,28 +2,38 @@
 
 namespace app\Http\Controllers\News;
 
+use app\Actions\News\SaveNewsAction;
+use app\Actions\Part\SavePartAction;
+use app\Data\News\NewsData;
+use app\Data\Part\PartData;
 use App\Http\Controllers\Controller;
+use App\Models\News;
+use Illuminate\Http\Request;
+use Spatie\LaravelData\PaginatedDataCollection;
 
 class NewsController extends Controller
 {
     public function index()
     {
-
+        $paginatedNews = News::all()->sortByDesc('created_at')->paginate(10);
+        return NewsData::collect($paginatedNews, PaginatedDataCollection::class);
     }
 
-    public function show()
+    public function show(News $news)
     {
-
+        return NewsData::fromModel($news);
     }
 
-    public function store()
+    public function store(NewsData $data): NewsData
     {
-
+        return SaveNewsAction::execute($data);
     }
 
-    public function update()
+    public function update(Request $request, News $news): NewsData
     {
+        $request->request->add(['id' => $news->id]);
 
+        return SaveNewsAction::execute(NewsData::validateAndCreate($request));
     }
 
     public function delete()
