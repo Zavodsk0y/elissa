@@ -2,6 +2,7 @@
 
 namespace app\Data\Service;
 
+use App\Models\Service;
 use Spatie\LaravelData\Data;
 
 class ServiceData extends Data

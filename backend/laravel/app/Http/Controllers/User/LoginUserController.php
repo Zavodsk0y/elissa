@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 
 class LoginUserController extends Controller
 {
-    public function __invoke(UserLoginData $data)
+    public function __invoke(UserLoginData $data): array
     {
         return LoginUserAction::execute($data);
     }

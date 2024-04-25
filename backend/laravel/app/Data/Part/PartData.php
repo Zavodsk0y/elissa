@@ -2,6 +2,7 @@
 
 namespace app\Data\Part;
 
+use App\Models\Part;
 use Spatie\LaravelData\Attributes\Validation\Exists;
 use Spatie\LaravelData\Attributes\Validation\IntegerType;
 use Spatie\LaravelData\Attributes\Validation\Max;

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use app\Data\Part\PartData;
+use app\Data\Part\PartShowData;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -13,7 +14,7 @@ class Part extends Model
     use HasFactory;
     use WithData;
 
-    protected string $dataClass = PartData::class;
+    protected string $dataClass = PartShowData::class;
 
     protected $fillable = [
         'category_id',
