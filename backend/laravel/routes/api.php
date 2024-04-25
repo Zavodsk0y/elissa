@@ -8,7 +8,3 @@ use Illuminate\Support\Facades\Route;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
-
-Route::post('/signup', RegistrationUserController::class);
-
-Route::post('/login', LoginUserController::class);

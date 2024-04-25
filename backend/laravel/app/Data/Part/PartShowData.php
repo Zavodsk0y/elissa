@@ -17,7 +17,7 @@ class PartShowData extends Data
     {
     }
 
-    public static function fromModel(Part $part)
+    public static function fromModel(Part $part): PartShowData
     {
         return new self(
             $part->header,
