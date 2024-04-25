@@ -2,7 +2,7 @@
 
 namespace app\Http\Controllers\User;
 
-use app\Actions\RegistrationUserAction;
+use app\Actions\User\RegistrationUserAction;
 use app\Data\User\UserRegistrationData;
 use App\Http\Controllers\Controller;
 use App\Models\User;

@@ -1,10 +1,9 @@
 <?php
 
-namespace app\Actions;
+namespace app\Actions\User;
 
 use app\Data\User\UserRegistrationData;
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 
 class RegistrationUserAction

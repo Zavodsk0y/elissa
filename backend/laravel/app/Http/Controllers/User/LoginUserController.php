@@ -2,7 +2,7 @@
 
 namespace app\Http\Controllers\User;
 
-use app\Actions\LoginUserAction;
+use app\Actions\User\LoginUserAction;
 use app\Data\User\UserLoginData;
 use App\Http\Controllers\Controller;
 
