@@ -1,16 +1,19 @@
 <?php
 
-namespace app\Http\Controllers\User;
+namespace App\Http\Controllers\User;
 
-use app\Actions\User\RegistrationUserAction;
-use app\Data\User\UserRegistrationData;
+use App\Actions\User\RegistrationUserAction;
+use App\Data\User\UserRegistrationData;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 
 class RegistrationUserController extends Controller
 {
     public function __invoke(UserRegistrationData $data): User
     {
+        Log::info('RegistrationUserController invoked');
+
         return RegistrationUserAction::execute($data);
     }
 }

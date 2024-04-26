@@ -13,7 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('order_status_history', function (Blueprint $table) {
-            $table->integer('id')->primary();
+            $table->id();
             $table->integer('order_id');
             $table->string('previous_status')->nullable();
             $table->string('new_status')->nullable();

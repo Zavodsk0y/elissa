@@ -13,7 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('social_accounts', function (Blueprint $table) {
-            $table->integer('id')->primary();
+            $table->id();
             $table->integer('user_id')->nullable();
             $table->string('provider')->nullable();
             $table->string('provider_id')->nullable();

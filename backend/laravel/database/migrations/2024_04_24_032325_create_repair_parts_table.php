@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('repair_parts', function (Blueprint $table) {
-            $table->integer('id')->primary();
+            $table->id();
             $table->integer('category_id');
             $table->string('header');
             $table->text('description')->nullable();

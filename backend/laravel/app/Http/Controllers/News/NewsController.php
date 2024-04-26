@@ -1,11 +1,11 @@
 <?php
 
-namespace app\Http\Controllers\News;
+namespace App\Http\Controllers\News;
 
-use app\Actions\News\SaveNewsAction;
-use app\Actions\Part\SavePartAction;
-use app\Data\News\NewsData;
-use app\Data\Part\PartData;
+use App\Actions\News\SaveNewsAction;
+use App\Actions\Part\SavePartAction;
+use App\Data\News\NewsData;
+use App\Data\Part\PartData;
 use App\Http\Controllers\Controller;
 use App\Models\News;
 use Illuminate\Http\Request;

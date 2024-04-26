@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('referrals', function (Blueprint $table) {
-            $table->integer('id')->primary();
+            $table->id();
             $table->integer('referring_user_id')->nullable();
             $table->integer('referred_user_id')->nullable();
             $table->timestamp('created_at')->nullable();

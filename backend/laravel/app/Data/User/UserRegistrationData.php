@@ -1,7 +1,8 @@
 <?php
 
-namespace app\Data\User;
+namespace App\Data\User;
 
+use Illuminate\Http\Request;
 use Spatie\LaravelData\Attributes\Validation\Email;
 use Spatie\LaravelData\Attributes\Validation\Min;
 use Spatie\LaravelData\Attributes\Validation\Password;
@@ -25,6 +26,13 @@ class UserRegistrationData extends Data
         public string $password,
     )
     {
+    }
+
+    public static function fromRequest(Request $request): self
+    {
+        return self::from([
+            ...$request->all(),
+        ]);
     }
 
     public static function attributes(...$args): array

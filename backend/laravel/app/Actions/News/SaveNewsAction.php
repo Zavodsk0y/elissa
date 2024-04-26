@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Actions\News;
+namespace App\Actions\News;
 
-use app\Data\News\NewsData;
+use App\Data\News\NewsData;
 use App\Models\News;
 
 class SaveNewsAction
@@ -14,6 +14,6 @@ class SaveNewsAction
             [...$data->all()]
         );
 
-        return $news->refresh()->getData();
+        return NewsData::fromModel($news);
     }
 }
