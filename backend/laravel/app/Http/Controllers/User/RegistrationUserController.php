@@ -12,8 +12,6 @@ class RegistrationUserController extends Controller
 {
     public function __invoke(UserRegistrationData $data): User
     {
-        Log::info('RegistrationUserController invoked');
-
         return RegistrationUserAction::execute($data);
     }
 }
