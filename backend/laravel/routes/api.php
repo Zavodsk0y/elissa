@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\User\EmailVerificationController;
+use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\News\NewsController;
-use App\Http\Controllers\User\LoginUserController;
+use App\Http\Controllers\User\EmailVerificationController;
 use App\Http\Controllers\User\RegistrationUserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -14,6 +14,8 @@ Route::get('/user', function (Request $request) {
 Route::post('/signup', RegistrationUserController::class);
 
 Route::resource('/news', NewsController::class);
+
+Route::resource('/category', CategoryController::class);
 
 Route::get('/email/verify/{user}/{hash}', [EmailVerificationController::class, 'verify'])
     ->middleware('signed')

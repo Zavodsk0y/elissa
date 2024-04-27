@@ -15,6 +15,8 @@ class Category extends Model
 
     protected string $dataClass = CategoryData::class;
 
+    protected $table = 'parts_categories';
+
     protected $fillable = [
         'name'
     ];
