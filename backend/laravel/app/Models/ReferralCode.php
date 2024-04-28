@@ -11,7 +11,8 @@ class ReferralCode extends Model
     use HasFactory;
 
     protected $fillable = [
-
+        'user_id',
+        'referral_code'
     ];
 
     public function user(): belongsTo

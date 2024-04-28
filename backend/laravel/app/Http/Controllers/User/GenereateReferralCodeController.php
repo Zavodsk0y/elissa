@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Http\Controllers\User;
+namespace App\Http\Controllers\User;
 
-use app\Actions\User\GenerateReferralCodeAction;
+use App\Actions\User\GenerateReferralCodeAction;
 use App\Http\Controllers\Controller;
 use App\Models\ReferralCode;
 use App\Models\User;

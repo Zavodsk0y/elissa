@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Actions\User;
+namespace App\Actions\User;
 
 use app\Data\User\UserLoginData;
 use app\Exceptions\User\LoginFailed;

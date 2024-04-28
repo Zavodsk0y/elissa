@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Exceptions\Shared;
+namespace App\Exceptions\Shared;
 
 use Illuminate\Http\Exceptions\HttpResponseException;
 
