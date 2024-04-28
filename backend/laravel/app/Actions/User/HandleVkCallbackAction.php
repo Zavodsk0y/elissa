@@ -1,0 +1,33 @@
+<?php
+
+namespace App\Actions\User;
+
+use App\Models\User;
+use Laravel\Socialite\Facades\Socialite;
+
+class HandleVkCallbackAction
+{
+    public static function execute()
+    {
+        $userSocial = Socialite::driver('vkontakte')->user();
+
+        $user = User::where('vk_id', $userSocial->getId())->first();
+
+        if (!$user) {
+            $user = User::create([
+                'vk_id' => $userSocial->getId(),
+                'login' => $userSocial->getNickname(),
+                'name' => $userSocial->user['first_name'],
+                'surname' => $userSocial->user['last_name'],
+            ]);
+
+            $token = $user->createToken('auth')->plainTextToken;
+
+            return response()->json(['token' => $token, 'message' => 'Укажите в настройках свою почту и пароль.'], 200);
+        }
+
+        $token = $user->createToken('auth')->plainTextToken;
+
+        return response()->json(['token' => $token, 'user' => $user], 200);
+    }
+}

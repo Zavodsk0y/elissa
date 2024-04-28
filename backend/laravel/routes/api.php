@@ -7,6 +7,7 @@ use App\Http\Controllers\User\EnterReferralCodeController;
 use App\Http\Controllers\User\GenereateReferralCodeController;
 use App\Http\Controllers\User\LoginUserController;
 use App\Http\Controllers\User\RegistrationUserController;
+use App\Http\Controllers\User\VkontakteAuthenticationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,9 @@ Route::get('/user', function (Request $request) {
 
 Route::post('/signup', RegistrationUserController::class);
 Route::post('/login', LoginUserController::class);
+
+Route::get('auth/vk', [VkontakteAuthenticationController::class, 'redirectToVk'])->middleware('web');
+Route::get('auth/vk/callback', [VkontakteAuthenticationController::class, 'handleVkCallback'])->middleware('web');
 
 Route::resource('/news', NewsController::class);
 
