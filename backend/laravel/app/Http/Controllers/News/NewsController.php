@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers\News;
 
-use App\Actions\News\SaveNewsAction;
+use App\Actions\News\DeleteNewsAction;
 use App\Actions\News\StoreNewsAction;
 use App\Actions\News\UpdateNewsAction;
-use App\Actions\News\UpsertNewsAction;
 use App\Data\News\NewsData;
 use App\Data\News\StoreNewsData;
 use App\Data\News\UpdateNewsData;
-use App\Data\News\UpsertNewsData;
 use App\Http\Controllers\Controller;
 use App\Models\News;
 use Illuminate\Http\JsonResponse;
@@ -44,8 +42,8 @@ class NewsController extends Controller
 
     }
 
-    public function delete()
+    public function destroy(News $news): JsonResponse
     {
-
+        return DeleteNewsAction::execute($news);
     }
 }

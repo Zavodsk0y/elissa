@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Category;
 
+use App\Actions\Category\DeleteCategoryAction;
 use App\Actions\Category\StoreCategoryAction;
 use App\Actions\Category\UpdateCategoryAction;
 use App\Data\Category\CategoryData;
@@ -41,8 +42,8 @@ class CategoryController extends Controller
 
     }
 
-    public function delete()
+    public function destroy(Category $category): JsonResponse
     {
-
+        return DeleteCategoryAction::execute($category);
     }
 }
