@@ -3,6 +3,7 @@
 use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\News\NewsController;
 use App\Http\Controllers\User\EmailVerificationController;
+use App\Http\Controllers\User\EnterReferralCodeController;
 use App\Http\Controllers\User\GenereateReferralCodeController;
 use App\Http\Controllers\User\LoginUserController;
 use App\Http\Controllers\User\RegistrationUserController;
@@ -26,4 +27,5 @@ Route::get('/email/verify/{user}/{hash}', [EmailVerificationController::class, '
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/referral', GenereateReferralCodeController::class);
+    Route::post('/refer', EnterReferralCodeController::class);
 });
