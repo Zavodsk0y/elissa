@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Exceptions\User;
+namespace App\Exceptions\User;
 
-use app\Exceptions\Shared\ApiException;
+use App\Exceptions\Shared\ApiException;
 
 class LoginFailed extends ApiException
 {

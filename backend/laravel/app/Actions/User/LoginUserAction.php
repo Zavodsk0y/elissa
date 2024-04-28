@@ -2,8 +2,8 @@
 
 namespace App\Actions\User;
 
-use app\Data\User\UserLoginData;
-use app\Exceptions\User\LoginFailed;
+use App\Data\User\UserLoginData;
+use App\Exceptions\User\LoginFailed;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
