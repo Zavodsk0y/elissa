@@ -19,7 +19,7 @@ class RegistrationUserAction
             'password' => $hashPassword
         ]);
 
-        $signedRoute = URL::temporarySignedRoute('verification.verify', now()->addDay(), ['id' => $user->id, 'hash' => sha1($user->getEmailForVerification())]);
+        $signedRoute = URL::temporarySignedRoute('verification.verify', now()->addDay(), ['id' => $user->id, 'hash' => sha1($user->getEmailForVerification()), 'user' => $user]);
 
         $user->notify(new EmailVerificationNotification($signedRoute));
 
