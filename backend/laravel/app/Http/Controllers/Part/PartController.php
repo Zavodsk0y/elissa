@@ -1,28 +1,29 @@
 <?php
 
-namespace app\Http\Controllers\Service;
+namespace App\Http\Controllers\Part;
 
-use app\Actions\Part\SavePartAction;
-use app\Data\Part\PartData;
-use app\Data\Part\PartShowData;
+use App\Actions\Part\DeletePartAction;
+use App\Actions\Part\StorePartAction;
+use App\Actions\Part\UpdatePartAction;
+use App\Data\Part\UpdatePartData;
+use App\Data\Part\PartShowData;
+use App\Data\Part\StorePartData;
 use App\Http\Controllers\Controller;
 use App\Models\Part;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Collection;
-use Spatie\LaravelData\PaginatedDataCollection;
 
 class PartController extends Controller
 {
-    public function index(Request $request): Collection
+    public function index()
     {
-        $paginatedParts = Part::with('category')->paginate(10);
-        return PartShowData::collect($paginatedParts, PaginatedDataCollection::class);
+        $paginatedParts = Part::orderBy('created_at', 'asc')->paginate(10);
+        return PartShowData::collect($paginatedParts);
     }
 
-    public function store(PartData $data): PartShowData
+    public function store(StorePartData $data): JsonResponse
     {
-        return SavePartAction::execute($data);
+        return response()->json(StorePartAction::execute($data), 201);
     }
 
     public function show(Part $part): PartShowData
@@ -33,12 +34,12 @@ class PartController extends Controller
     public function update(Request $request, Part $part): PartShowData
     {
         $request->request->add(['id' => $part->id]);
-
-        return SavePartAction::execute(PartData::validateAndCreate($request));
+        $data = UpdatePartData::fromRequest($request, $part);
+        return UpdatePartAction::execute($data, $part);
     }
 
-    public function delete()
+    public function destroy(Part $part): JsonResponse
     {
-
+        return DeletePartAction::execute($part);
     }
 }

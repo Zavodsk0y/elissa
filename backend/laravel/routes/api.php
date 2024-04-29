@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\News\NewsController;
+use App\Http\Controllers\Part\PartController;
 use App\Http\Controllers\User\ChangeEmailAndPasswordController;
 use App\Http\Controllers\User\EmailVerificationController;
 use App\Http\Controllers\User\EnterReferralCodeController;
@@ -24,7 +25,9 @@ Route::get('auth/vk/callback', [VkontakteAuthenticationController::class, 'handl
 
 Route::resource('/news', NewsController::class);
 
-Route::resource('/category', CategoryController::class);
+Route::resource('/categories', CategoryController::class);
+
+Route::resource('/parts', PartController::class);
 
 Route::get('/email/verify/{user}/{hash}', [EmailVerificationController::class, 'verify'])
     ->middleware('signed')

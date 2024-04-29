@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use app\Data\Part\PartData;
-use app\Data\Part\PartShowData;
+use App\Data\Part\PartShowData;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Spatie\LaravelData\WithData;
 
@@ -16,6 +16,8 @@ class Part extends Model
 
     protected string $dataClass = PartShowData::class;
 
+    protected $table = 'repair_parts';
+
     protected $fillable = [
         'category_id',
         'header',
@@ -23,8 +25,8 @@ class Part extends Model
         'price'
     ];
 
-    public function category(): hasOne
+    public function category(): belongsTo
     {
-        return $this->hasOne(Category::class);
+        return $this->belongsTo(Category::class);
     }
 }

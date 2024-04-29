@@ -1,24 +1,27 @@
 <?php
 
-namespace app\Data\Part;
+namespace App\Data\Part;
 
-use App\Models\Part;
+use Spatie\LaravelData\Attributes\MapName;
 use Spatie\LaravelData\Attributes\Validation\Exists;
 use Spatie\LaravelData\Attributes\Validation\IntegerType;
 use Spatie\LaravelData\Attributes\Validation\Max;
 use Spatie\LaravelData\Attributes\Validation\StringType;
 use Spatie\LaravelData\Data;
+use Spatie\LaravelData\Mappers\SnakeCaseMapper;
+use Symfony\Contracts\Service\Attribute\Required;
 
-class PartData extends Data
+#[MapName(SnakeCaseMapper::class)]
+class StorePartData extends Data
 {
     public function __construct(
-        #[IntegerType, Exists('parts', 'id')]
-        public ?int   $id,
-        #[IntegerType, Exists('categories', 'id')]
+        #[IntegerType, Exists('parts_categories', 'id'), Required]
         public int    $categoryId,
+        #[StringType, Max(255), Required]
         public string $header,
-        #[StringType, Max(1000)]
+        #[StringType, Max(500), Required]
         public string $description,
+        #[Required]
         public float  $price
     )
     {
