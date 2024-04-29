@@ -3,13 +3,14 @@
 namespace App\Actions\User;
 
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Laravel\Socialite\Facades\Socialite;
 
 class HandleVkCallbackAction
 {
-    public static function execute()
+    public static function execute(): JsonResponse
     {
-        $userSocial = Socialite::driver('vkontakte')->user();
+        $userSocial = Socialite::driver('vkontakte')->stateless()->user();
 
         $user = User::where('vk_id', $userSocial->getId())->first();
 

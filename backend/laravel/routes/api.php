@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\News\NewsController;
+use App\Http\Controllers\User\ChangeEmailAndPasswordController;
 use App\Http\Controllers\User\EmailVerificationController;
 use App\Http\Controllers\User\EnterReferralCodeController;
 use App\Http\Controllers\User\GenereateReferralCodeController;
@@ -18,8 +19,8 @@ Route::get('/user', function (Request $request) {
 Route::post('/signup', RegistrationUserController::class);
 Route::post('/login', LoginUserController::class);
 
-Route::get('auth/vk', [VkontakteAuthenticationController::class, 'redirectToVk'])->middleware('web');
-Route::get('auth/vk/callback', [VkontakteAuthenticationController::class, 'handleVkCallback'])->middleware('web');
+Route::get('auth/vk', [VkontakteAuthenticationController::class, 'redirectToVk']);
+Route::get('auth/vk/callback', [VkontakteAuthenticationController::class, 'handleVkCallback']);
 
 Route::resource('/news', NewsController::class);
 
@@ -30,6 +31,9 @@ Route::get('/email/verify/{user}/{hash}', [EmailVerificationController::class, '
     ->name('verification.verify');
 
 Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/users/credentials', ChangeEmailAndPasswordController::class);
+
+
     Route::post('/referral', GenereateReferralCodeController::class);
     Route::post('/refer', EnterReferralCodeController::class);
 });

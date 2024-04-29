@@ -10,6 +10,7 @@ class RedirectToVkAction
     public static function execute(): RedirectResponse
     {
         return Socialite::driver('vkontakte')
+            ->stateless()
             ->redirect();
     }
 }
