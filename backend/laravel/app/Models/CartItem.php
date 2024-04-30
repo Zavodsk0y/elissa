@@ -24,4 +24,9 @@ class CartItem extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function part(): BelongsTo
+    {
+        return $this->belongsTo(Part::class, 'part_id');
+    }
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Cart\CartController;
 use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\News\NewsController;
+use App\Http\Controllers\Order\OrderController;
 use App\Http\Controllers\Part\PartController;
 use App\Http\Controllers\User\ChangeEmailAndPasswordController;
 use App\Http\Controllers\User\EmailVerificationController;
@@ -40,6 +41,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/cart/{part}', [CartController::class, 'addToCart']);
     Route::delete('/cart/{part}', [CartController::class, 'removeFromCart']);
     Route::get('/cart', [CartController::class, 'index']);
+
+    Route::post('/order', [OrderController::class, 'store']);
 
 
     Route::post('/referral', GenereateReferralCodeController::class);

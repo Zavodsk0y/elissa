@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Enums\Request;
+namespace App\Enums\Request;
 
 use App\Models\Request;
 use app\Transitions\Request\ConfirmedToDone;
