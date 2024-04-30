@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\Order\OrderStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,5 +16,13 @@ class Order extends Model
         'user_id'
     ];
 
-    public $timestamps = false;
+    public function isCreated(): bool
+    {
+        return $this->status === OrderStatus::Created->value;
+    }
+
+    public function isConfirmed(): bool
+    {
+        return $this->status === OrderStatus::Confirmed->value;
+    }
 }

@@ -42,7 +42,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/cart/{part}', [CartController::class, 'removeFromCart']);
     Route::get('/cart', [CartController::class, 'index']);
 
-    Route::post('/order', [OrderController::class, 'store']);
+    Route::resource('orders', OrderController::class)->only('store', 'destroy');
 
 
     Route::post('/referral', GenereateReferralCodeController::class);
