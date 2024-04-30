@@ -17,6 +17,7 @@ return new class extends Migration
             $table->decimal('total_amount')->nullable();
             $table->string('status')->nullable();
             $table->integer('user_id')->nullable();
+            $table->timestamp('activated_at')->nullable();
             $table->timestamps();
         });
     }
