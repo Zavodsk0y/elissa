@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\Order\OrderStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Order extends Model
 {
@@ -15,6 +16,11 @@ class Order extends Model
         'total_amount',
         'user_id'
     ];
+
+    public function items(): hasMany
+    {
+        return $this->hasMany(OrderItem::class);
+    }
 
     public function isCreated(): bool
     {
