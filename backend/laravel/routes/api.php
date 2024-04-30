@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Cart\CartController;
 use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\News\NewsController;
 use App\Http\Controllers\Part\PartController;
@@ -35,6 +36,10 @@ Route::get('/email/verify/{user}/{hash}', [EmailVerificationController::class, '
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/users/credentials', ChangeEmailAndPasswordController::class);
+
+    Route::post('/cart/{part}', [CartController::class, 'addToCart']);
+    Route::delete('/cart/{part}', [CartController::class, 'removeFromCart']);
+    Route::get('/cart', [CartController::class, 'index']);
 
 
     Route::post('/referral', GenereateReferralCodeController::class);
