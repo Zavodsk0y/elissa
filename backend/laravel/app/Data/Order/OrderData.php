@@ -25,7 +25,7 @@ class OrderData extends Data
                     'id' => $item->id,
                     'part_name' => $item->part->header,
                     'quantity' => $item->quantity,
-                    'price_per_unit' => $item->part->price,
+                    'price_per_unit' => (float)$item->part->price,
                     'total_price' => $item->quantity * $item->part->price,
                 ];
             })->toArray(),
