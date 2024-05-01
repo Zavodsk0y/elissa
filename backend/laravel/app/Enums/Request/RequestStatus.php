@@ -15,6 +15,7 @@ enum RequestStatus: string
     public function updateStatus(Request $request): Request
     {
         return match ($this) {
+            RequestStatus::Created => ConfirmedToCreated::execute($request),
             RequestStatus::Confirmed => CreatedToConfirmed::execute($request),
             RequestStatus::Done => ConfirmedToDone::execute($request)
         };

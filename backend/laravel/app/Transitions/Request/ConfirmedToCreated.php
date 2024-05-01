@@ -1,20 +1,21 @@
 <?php
 
-namespace app\Transitions\Request;
+namespace App\Transitions\Request;
 
-use app\Enums\Request\RequestStatus;
+use App\Enums\Request\RequestStatus;
 use App\Exceptions\Request\CannotChangeRequestStatusException;
 use App\Models\Request;
 use App\Models\RequestStatusHistory;
 
-class ConfirmedToDone implements RequestTransition
+class ConfirmedToCreated implements RequestTransition
 {
     public static function execute(Request $request): Request
     {
-
         throw_unless($request->isConfirmed(), new CannotChangeRequestStatusException());
+
         $previousStatus = $request->status;
-        $request->status = RequestStatus::Done->value;
+        $request->status = RequestStatus::Created->value;
+        $request->activated_at = null;
         $request->save();
 
         RequestStatusHistory::create([

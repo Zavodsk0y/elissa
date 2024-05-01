@@ -15,7 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('phone')->nullable();
             $table->string('status')->nullable();
+            $table->integer('user_id')->nullable();
             $table->integer('service_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->timestamp('activated_at')->nullable();
+            $table->timestamps();
         });
     }
 

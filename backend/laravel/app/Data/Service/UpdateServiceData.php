@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Data\Part;
+namespace App\Data\Service;
 
-use App\Models\Part;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Spatie\LaravelData\Attributes\MapName;
 use Spatie\LaravelData\Attributes\Validation\Exists;
@@ -13,13 +13,11 @@ use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Mappers\SnakeCaseMapper;
 
 #[MapName(SnakeCaseMapper::class)]
-class UpdatePartData extends Data
+class UpdateServiceData extends Data
 {
     public function __construct(
-        #[IntegerType, Exists('repair_parts', 'id')]
+        #[IntegerType, Exists('services', 'id')]
         public readonly ?int    $id,
-        #[IntegerType, Exists('parts_categories', 'id')]
-        public readonly ?int    $categoryId,
         #[StringType, Max(255)]
         public readonly ?string $header,
         #[StringType, Max(500)]
@@ -29,14 +27,13 @@ class UpdatePartData extends Data
     {
     }
 
-    public static function fromRequest(Request $request, Part $part): self
+    public static function fromRequest(Request $request, Service $service): self
     {
         return self::from([
             'id' => $request->id,
-            'categoryId' => $request->input('category_id') ?? $part->category_id,
-            'header' => $request->input('header') ?? $part->header,
-            'description' => $request->input('description') ?? $part->description,
-            'price' => $request->input('price') ?? $part->price
+            'header' => $request->input('header') ?? $service->header,
+            'description' => $request->input('description') ?? $service->description,
+            'price' => $request->input('price') ?? $service->price
         ]);
     }
 }

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('header')->nullable();
             $table->text('description')->nullable();
             $table->decimal('price')->nullable();
+            $table->timestamps();
         });
     }
 

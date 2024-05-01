@@ -6,7 +6,6 @@ use App\Enums\Order\OrderStatus;
 use App\Models\CartItem;
 use App\Models\Referral;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Spatie\LaravelData\Attributes\MapName;
 use Spatie\LaravelData\Attributes\Validation\Prohibited;
 use Spatie\LaravelData\Attributes\WithCast;

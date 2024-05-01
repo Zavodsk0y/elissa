@@ -6,6 +6,9 @@ use App\Http\Controllers\News\NewsController;
 use App\Http\Controllers\Order\OrderController;
 use App\Http\Controllers\Order\UpdateOrderStatusController;
 use App\Http\Controllers\Part\PartController;
+use App\Http\Controllers\Request\RequestController;
+use App\Http\Controllers\Request\UpdateRequestStatusController;
+use App\Http\Controllers\Service\ServiceController;
 use App\Http\Controllers\User\ChangeEmailAndPasswordController;
 use App\Http\Controllers\User\EmailVerificationController;
 use App\Http\Controllers\User\EnterReferralCodeController;
@@ -32,6 +35,8 @@ Route::resource('/categories', CategoryController::class);
 
 Route::resource('/parts', PartController::class);
 
+Route::resource('/services', ServiceController::class);
+
 Route::get('/email/verify/{user}/{hash}', [EmailVerificationController::class, 'verify'])
     ->middleware('signed')
     ->name('verification.verify');
@@ -43,7 +48,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/cart/{part}', [CartController::class, 'removeFromCart']);
     Route::get('/cart', [CartController::class, 'index']);
 
-    Route::resource('orders', OrderController::class);
+    Route::resource('requests', RequestController::class)->except('update');
+    Route::patch('/requests/{request}', UpdateRequestStatusController::class);
+
+    Route::resource('orders', OrderController::class)->except('update');
     Route::patch('/orders/{order}', UpdateOrderStatusController::class);
 
 

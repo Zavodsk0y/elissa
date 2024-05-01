@@ -2,6 +2,7 @@
 
 namespace App\Actions\Order;
 
+use App\Data\Order\OrderData;
 use App\Data\Order\StoreOrderData;
 use App\Models\CartItem;
 use App\Models\Order;
@@ -27,6 +28,6 @@ class StoreOrderAction
 
         CartItem::where('user_id', $data->userId)->delete();
 
-        return $order;
+        return OrderData::fromModel($order);
     }
 }
