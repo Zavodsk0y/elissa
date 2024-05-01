@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Service;
 
-use App\Actions\Part\UpdateServiceAction;
 use App\Actions\Service\DeleteServiceAction;
 use App\Actions\Service\StoreServiceAction;
-use app\Data\Service\ServiceShowData;
+use App\Actions\Service\UpdateServiceAction;
+use App\Data\Service\ServiceShowData;
 use App\Data\Service\StoreServiceData;
 use App\Data\Service\UpdateServiceData;
 use App\Http\Controllers\Controller;

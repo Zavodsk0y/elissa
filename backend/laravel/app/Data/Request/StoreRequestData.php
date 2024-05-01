@@ -19,23 +19,25 @@ use Symfony\Contracts\Service\Attribute\Required;
 class StoreRequestData extends Data
 {
     public function __construct(
-        public readonly ?int    $userId,
+        public readonly int    $userId,
         #[Required, Exists('services', 'id')]
         public readonly int     $serviceId,
         #[Required, Regex('/^\+7\d{10}$/')]
         public readonly string  $phone,
         #[WithCast(EnumCast::class)]
         #[Prohibited]
-        public readonly ?string $status = RequestStatus::Created->value
+        public readonly string $status = RequestStatus::Created->value
     )
     {
     }
 
     public static function fromRequest(Request $request, User $user): self
     {
+        $userId = $user->id;
+
         return new self(
-            $user->id,
-            $request->serviceId,
+            $userId,
+            $request->service_id,
             $request->phone,
             RequestStatus::Created->value
         );

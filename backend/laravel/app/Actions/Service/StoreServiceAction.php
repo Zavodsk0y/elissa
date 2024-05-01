@@ -3,7 +3,7 @@
 namespace App\Actions\Service;
 
 use App\Data\Part\PartShowData;
-use app\Data\Service\ServiceShowData;
+use App\Data\Service\ServiceShowData;
 use App\Data\Service\StoreServiceData;
 use App\Models\Service;
 
@@ -15,6 +15,6 @@ class StoreServiceAction
             [...$data->all()]
         );
 
-        return PartShowData::from($service);
+        return ServiceShowData::from($service);
     }
 }

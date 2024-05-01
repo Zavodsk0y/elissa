@@ -19,7 +19,7 @@ class ConfirmedToCreated implements RequestTransition
         $request->save();
 
         RequestStatusHistory::create([
-            'order_id' => $request->id,
+            'request_id' => $request->id,
             'previous_status' => $previousStatus,
             'new_status' => $request->status,
             'changed_by_user_id' => auth()->user()->id,

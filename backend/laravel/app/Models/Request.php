@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use app\Enums\Request\RequestStatus;
+use App\Enums\Request\RequestStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -15,7 +15,8 @@ class Request extends Model
     protected $fillable = [
         'phone',
         'service_id',
-        'status'
+        'status',
+        'user_id'
     ];
 
     public function service(): belongsTo

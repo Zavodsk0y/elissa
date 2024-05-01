@@ -3,8 +3,9 @@
 namespace App\Enums\Request;
 
 use App\Models\Request;
-use app\Transitions\Request\ConfirmedToDone;
-use app\Transitions\Request\CreatedToConfirmed;
+use App\Transitions\Request\ConfirmedToCreated;
+use App\Transitions\Request\ConfirmedToDone;
+use App\Transitions\Request\CreatedToConfirmed;
 
 enum RequestStatus: string
 {

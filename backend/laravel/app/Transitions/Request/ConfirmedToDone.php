@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Transitions\Request;
+namespace App\Transitions\Request;
 
-use app\Enums\Request\RequestStatus;
+use App\Enums\Request\RequestStatus;
 use App\Exceptions\Request\CannotChangeRequestStatusException;
 use App\Models\Request;
 use App\Models\RequestStatusHistory;
@@ -18,7 +18,7 @@ class ConfirmedToDone implements RequestTransition
         $request->save();
 
         RequestStatusHistory::create([
-            'order_id' => $request->id,
+            'request_id' => $request->id,
             'previous_status' => $previousStatus,
             'new_status' => $request->status,
             'changed_by_user_id' => auth()->user()->id,

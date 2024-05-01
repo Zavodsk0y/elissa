@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Request;
 
-use app\Data\Request\RequestStatusData;
+use App\Data\Request\RequestStatusData;
 use App\Http\Controllers\Controller;
 use App\Models\Request;
 use Illuminate\Http\JsonResponse;

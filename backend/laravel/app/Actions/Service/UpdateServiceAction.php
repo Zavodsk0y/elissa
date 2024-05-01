@@ -1,12 +1,9 @@
 <?php
 
-namespace App\Actions\Part;
+namespace App\Actions\Service;
 
-use App\Data\Part\UpdatePartData;
-use App\Data\Part\PartShowData;
-use app\Data\Service\ServiceShowData;
+use App\Data\Service\ServiceShowData;
 use App\Data\Service\UpdateServiceData;
-use App\Models\Part;
 use App\Models\Service;
 
 class UpdateServiceAction

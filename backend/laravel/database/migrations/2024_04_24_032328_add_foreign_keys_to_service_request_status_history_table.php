@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('service_request_status_history', function (Blueprint $table) {
             $table->foreign(['changed_by_user_id'], 'service_request_status_history_changed_by_user_id_fkey')->references(['id'])->on('users')->onUpdate('no action')->onDelete('no action');
-            $table->foreign(['request_id'], 'service_request_status_history_request_id_fkey')->references(['id'])->on('requests')->onUpdate('no action')->onDelete('no action');
+            $table->foreign(['request_id'], 'service_request_status_history_request_id_fkey')->references(['id'])->on('requests')->onUpdate('no action')->onDelete('CASCADE');
         });
     }
 

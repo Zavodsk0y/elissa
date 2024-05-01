@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Data\Request;
+namespace App\Data\Request;
 
-use app\Enums\Request\RequestStatus;
+use App\Enums\Request\RequestStatus;
 use Spatie\LaravelData\Attributes\MapName;
 use Spatie\LaravelData\Attributes\Validation\Required;
 use Spatie\LaravelData\Attributes\WithCast;

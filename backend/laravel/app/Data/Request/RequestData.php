@@ -3,7 +3,6 @@
 namespace App\Data\Request;
 
 use App\Data\Service\ServiceShowData;
-use App\Enums\Request\RequestStatus;
 use App\Models\Request;
 use Spatie\LaravelData\Attributes\MapName;
 use Spatie\LaravelData\Data;
@@ -16,7 +15,7 @@ class RequestData extends Data
         public readonly int             $id,
         public readonly int             $userId,
         public readonly string          $phone,
-        public readonly RequestStatus   $status,
+        public readonly string          $status,
         public readonly ServiceShowData $service
     )
     {
@@ -26,7 +25,7 @@ class RequestData extends Data
     {
         return new self(
             $request->id,
-            $request->userId,
+            $request->user_id,
             $request->phone,
             $request->status,
             ServiceShowData::from($request->service)
