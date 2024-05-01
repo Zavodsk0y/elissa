@@ -28,6 +28,11 @@ class OrderController extends Controller
         return response()->json(['orders' => $data]);
     }
 
+    public function show(Order $order): OrderData
+    {
+        return OrderData::fromModel($order);
+    }
+
     public function store(): JsonResponse
     {
         return response()->json(StoreOrderAction::execute(StoreOrderData::fromRequest(auth()->user())), 201);

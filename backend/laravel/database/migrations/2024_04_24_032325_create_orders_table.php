@@ -15,6 +15,7 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->decimal('total_amount')->nullable();
+            $table->decimal('referral_amount')->nullable();
             $table->string('status')->nullable();
             $table->integer('user_id')->nullable();
             $table->timestamp('activated_at')->nullable();

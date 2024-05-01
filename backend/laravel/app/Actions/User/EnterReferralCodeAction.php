@@ -17,7 +17,8 @@ class EnterReferralCodeAction
 
         throw_unless($referringUser, CodeNotFoundException::class);
 
-        throw_unless($referringUser->user_id === $user->id && Referral::where('referred_user_id', $user->id)->first(), CannotEnterYourselfException::class);
+        throw_unless($referringUser->user_id !== $user->id && !Referral::where('referred_user_id', $user->id)->first(),
+            CannotEnterYourselfException::class);
 
         return Referral::create([
             'referring_user_id' => $referringUser->user_id,

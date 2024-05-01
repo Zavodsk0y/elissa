@@ -14,6 +14,7 @@ class Order extends Model
     protected $fillable = [
         'status',
         'total_amount',
+        'referral_amount',
         'user_id'
     ];
 

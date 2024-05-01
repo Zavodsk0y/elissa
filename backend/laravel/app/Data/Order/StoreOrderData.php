@@ -4,6 +4,7 @@ namespace App\Data\Order;
 
 use App\Enums\Order\OrderStatus;
 use App\Models\CartItem;
+use App\Models\Referral;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\LaravelData\Attributes\MapName;
@@ -19,6 +20,7 @@ class StoreOrderData extends Data
     public function __construct(
         public readonly ?int $userId,
         public readonly float $totalAmount,
+        public readonly ?float $referralAmount,
         #[WithCast(EnumCast::class)]
         #[Prohibited]
         public readonly ?string $status = OrderStatus::Created->value
@@ -26,11 +28,17 @@ class StoreOrderData extends Data
 
     public static function fromRequest(User $user): self
     {
+        $totalAmount = CartItem::where('user_id', $user->id)->get()->sum(function ($item) {
+            return $item->quantity * $item->part->price;
+        });
+        $referral = Referral::where('referred_user_id', $user->id)->first();
+        if ($referral) $referralAmount = $totalAmount * 0.95;
+        else $referralAmount = null;
+
         return new self(
             $user->id,
-            CartItem::where('user_id', $user->id)->get()->sum(function ($item) {
-                return $item->quantity * $item->part->price;
-            }),
+            $totalAmount,
+            $referralAmount,
             OrderStatus::Created->value
         );
     }
