@@ -10,11 +10,14 @@ use App\Data\Part\PartShowData;
 use App\Data\Part\StorePartData;
 use App\Http\Controllers\Controller;
 use App\Models\Part;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class PartController extends Controller
 {
+    use AuthorizesRequests;
+
     public function index()
     {
         $paginatedParts = Part::orderBy('created_at', 'asc')->paginate(10);
@@ -23,6 +26,8 @@ class PartController extends Controller
 
     public function store(StorePartData $data): JsonResponse
     {
+        $this->authorize('part add', Part::class);
+
         return response()->json(StorePartAction::execute($data), 201);
     }
 
@@ -33,6 +38,8 @@ class PartController extends Controller
 
     public function update(Request $request, Part $part): PartShowData
     {
+        $this->authorize('part update', Part::class);
+
         $request->request->add(['id' => $part->id]);
         $data = UpdatePartData::fromRequest($request, $part);
         return UpdatePartAction::execute($data, $part);
@@ -40,6 +47,8 @@ class PartController extends Controller
 
     public function destroy(Part $part): JsonResponse
     {
+        $this->authorize('part delete', Part::class);
+
         return DeletePartAction::execute($part);
     }
 }

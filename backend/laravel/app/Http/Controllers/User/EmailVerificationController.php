@@ -13,6 +13,7 @@ class EmailVerificationController extends Controller
     public function verify(Request $request, User $user): JsonResponse
     {
         $user->markEmailAsVerified();
+        $user->assignRole('authenticated user');
 
         return response()->json(['message' => 'Email verified successfully.'], 200);
     }
