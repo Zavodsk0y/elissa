@@ -42,4 +42,14 @@ class StoreRequestData extends Data
             RequestStatus::Created->value
         );
     }
+
+    public static function attributes(...$args): array
+    {
+        return [
+            'userId' => 'идентификатор пользователя',
+            'serviceId' => 'идентификатор услуги',
+            'phone' => 'номер телефона',
+            'status' => 'статус заявки'
+        ];
+    }
 }

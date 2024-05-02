@@ -27,5 +27,14 @@ class UpdateNewsData extends Data
             'text' => $request->input('text') ?? $news->text
         ]);
     }
+
+    public static function attributes(...$args): array
+    {
+        return [
+            'id' => 'идентификатор новости',
+            'title' => 'заголовок',
+            'text' => 'текст'
+        ];
+    }
 }
 

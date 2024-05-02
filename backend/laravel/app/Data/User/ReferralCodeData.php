@@ -18,4 +18,11 @@ class ReferralCodeData extends Data
     )
     {
     }
+
+    public static function attributes(...$args): array
+    {
+        return [
+            'referralCode' => 'реферальный код'
+        ];
+    }
 }

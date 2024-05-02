@@ -36,5 +36,15 @@ class UpdateServiceData extends Data
             'price' => $request->input('price') ?? $service->price
         ]);
     }
+
+    public static function attributes(...$args): array
+    {
+        return [
+            'id' => 'идентификатор услуги',
+            'header' => 'наименование услуги',
+            'description' => 'описание',
+            'price' => 'цена'
+        ];
+    }
 }
 

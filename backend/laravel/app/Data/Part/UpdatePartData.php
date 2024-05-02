@@ -39,5 +39,16 @@ class UpdatePartData extends Data
             'price' => $request->input('price') ?? $part->price
         ]);
     }
+
+    public static function attributes(...$args): array
+    {
+        return [
+            'id' => 'идентификатор запчасти',
+            'categoryId' => 'идентификатор категории',
+            'header' => 'наименование',
+            'description' => 'описание',
+            'price' => 'цена'
+        ];
+    }
 }
 

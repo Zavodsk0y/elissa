@@ -27,7 +27,7 @@ class StoreServiceData extends Data
     public static function attributes(...$args): array
     {
         return [
-            'header' => 'наименование',
+            'header' => 'наименование услуги',
             'description' => 'описание',
             'price' => 'цена'
         ];

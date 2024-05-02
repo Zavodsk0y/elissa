@@ -39,7 +39,7 @@ class UserRegistrationData extends Data
     {
         return [
             'login' => 'логин',
-            'email' => 'почта',
+            'email' => 'адрес электронной почты',
             'name' => 'имя',
             'surname' => 'фамилия',
             'patronymic' => 'отчество',

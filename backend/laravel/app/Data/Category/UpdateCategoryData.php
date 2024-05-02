@@ -31,6 +31,7 @@ class UpdateCategoryData extends Data
     public static function attributes(...$args): array
     {
         return [
+            'id' => 'идентификатор категории',
             'name' => 'название категории'
         ];
     }

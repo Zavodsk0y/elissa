@@ -41,4 +41,14 @@ class StoreOrderData extends Data
             OrderStatus::Created->value
         );
     }
+
+    public static function attributes(...$args): array
+    {
+        return [
+            'userId' => 'идентификатор пользователя',
+            'totalAmount' => 'общая цена заказа',
+            'referralAmount' => 'реферальная цена заказа',
+            'status' => 'статус заказа'
+        ];
+    }
 }
