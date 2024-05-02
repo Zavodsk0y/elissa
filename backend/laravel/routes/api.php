@@ -30,10 +30,11 @@ Route::post('/login', LoginUserController::class);
 Route::get('auth/vk', [VkontakteAuthenticationController::class, 'redirectToVk']);
 Route::get('auth/vk/callback', [VkontakteAuthenticationController::class, 'handleVkCallback']);
 
+Route::resource('news', NewsController::class)->only('index', 'show');
 
-Route::resource('/categories', CategoryController::class);
+Route::resource('categories', CategoryController::class)->only('index', 'show');
 
-Route::resource('/parts', PartController::class);
+Route::resource('parts', PartController::class)->only('index', 'show');
 
 Route::resource('/services', ServiceController::class);
 
@@ -48,7 +49,11 @@ Route::group(['middleware' => ['auth:sanctum', EnsureVerifiedEmail::class]], fun
     Route::delete('/cart/{part}', [CartController::class, 'removeFromCart']);
     Route::get('/cart', [CartController::class, 'index']);
 
-    Route::resource('/news', NewsController::class);
+    Route::resource('news', NewsController::class)->only('store', 'update', 'delete');
+
+    Route::resource('categories', CategoryController::class)->only('store', 'update', 'delete');
+
+    Route::resource('parts', PartController::class)->only('store', 'update', 'delete');
 
     Route::resource('requests', RequestController::class)->except('update');
     Route::patch('/requests/{request}', UpdateRequestStatusController::class);

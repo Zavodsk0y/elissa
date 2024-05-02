@@ -41,6 +41,8 @@ class NewsController extends Controller
 
     public function update(Request $request, News $news): NewsData
     {
+        $this->authorize('news update', News::class);
+
         $request->request->add(['id' => $news->id]);
         $data = UpdateNewsData::fromRequest($request, $news);
         return UpdateNewsAction::execute($data, $news);
@@ -49,6 +51,8 @@ class NewsController extends Controller
 
     public function destroy(News $news): JsonResponse
     {
+        $this->authorize('news delete', News::class);
+
         return DeleteNewsAction::execute($news);
     }
 }
