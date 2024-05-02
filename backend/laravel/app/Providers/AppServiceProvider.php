@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\News;
+use App\Policies\News\NewsPolicy;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,5 +27,6 @@ class AppServiceProvider extends ServiceProvider
             $event->extendSocialite('vkontakte', \SocialiteProviders\VKontakte\Provider::class);
         });
 
+        Gate::policy(News::class, NewsPolicy::class);
     }
 }

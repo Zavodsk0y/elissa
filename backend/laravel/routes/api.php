@@ -16,6 +16,7 @@ use App\Http\Controllers\User\GenereateReferralCodeController;
 use App\Http\Controllers\User\LoginUserController;
 use App\Http\Controllers\User\RegistrationUserController;
 use App\Http\Controllers\User\VkontakteAuthenticationController;
+use App\Http\Middleware\EnsureVerifiedEmail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,7 +30,6 @@ Route::post('/login', LoginUserController::class);
 Route::get('auth/vk', [VkontakteAuthenticationController::class, 'redirectToVk']);
 Route::get('auth/vk/callback', [VkontakteAuthenticationController::class, 'handleVkCallback']);
 
-Route::resource('/news', NewsController::class);
 
 Route::resource('/categories', CategoryController::class);
 
@@ -41,12 +41,14 @@ Route::get('/email/verify/{user}/{hash}', [EmailVerificationController::class, '
     ->middleware('signed')
     ->name('verification.verify');
 
-Route::middleware('auth:sanctum')->group(function () {
+Route::group(['middleware' => ['auth:sanctum', EnsureVerifiedEmail::class]], function () {
     Route::post('/users/credentials', ChangeEmailAndPasswordController::class);
 
     Route::post('/cart/{part}', [CartController::class, 'addToCart']);
     Route::delete('/cart/{part}', [CartController::class, 'removeFromCart']);
     Route::get('/cart', [CartController::class, 'index']);
+
+    Route::resource('/news', NewsController::class);
 
     Route::resource('requests', RequestController::class)->except('update');
     Route::patch('/requests/{request}', UpdateRequestStatusController::class);
