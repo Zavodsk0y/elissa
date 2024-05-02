@@ -10,7 +10,7 @@ use App\Models\OrderItem;
 
 class StoreOrderAction
 {
-    public static function execute(StoreOrderData $data)
+    public static function execute(StoreOrderData $data): OrderData
     {
         $order = Order::create(
             [...$data->all()]

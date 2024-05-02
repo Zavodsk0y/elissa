@@ -5,10 +5,11 @@ namespace App\Actions\Cart;
 use App\Models\CartItem;
 use App\Models\Part;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 
 class RemoveItemFromCartAction
 {
-    public static function execute(Part $part, User $user)
+    public static function execute(Part $part, User $user): JsonResponse
     {
         $item = CartItem::where('part_id', $part->id)
             ->where('user_id', $user->id);

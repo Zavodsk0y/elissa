@@ -11,7 +11,7 @@ use App\Models\User;
 
 class EnterReferralCodeAction
 {
-    public static function execute(ReferralCodeData $data, User $user)
+    public static function execute(ReferralCodeData $data, User $user): Referral
     {
         $referringUser = ReferralCode::where('referral_code', $data->all())->first();
 
