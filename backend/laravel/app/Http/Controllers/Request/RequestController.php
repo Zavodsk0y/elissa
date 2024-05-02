@@ -8,11 +8,14 @@ use App\Data\Request\RequestData;
 use App\Data\Request\StoreRequestData;
 use App\Http\Controllers\Controller;
 use App\Models\Request;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request as HttpRequest;
 
 class RequestController extends Controller
 {
+    use AuthorizesRequests;
+
     public function index()
     {
         $requests = Request::where('user_id', auth()->user()->id)->get();
@@ -27,11 +30,15 @@ class RequestController extends Controller
 
     public function store(HttpRequest $request): JsonResponse
     {
+        $this->authorize('request interaction', Request::class);
+
         return response()->json(StoreRequestAction::execute(StoreRequestData::fromRequest($request, auth()->user())), 201);
     }
 
     public function destroy(Request $request): JsonResponse
     {
+        $this->authorize('request interaction', Request::class);
+
         return DeleteRequestAction::execute($request);
     }
 }

@@ -9,10 +9,13 @@ use App\Data\Order\StoreOrderData;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\User;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\JsonResponse;
 
 class OrderController extends Controller
 {
+    use AuthorizesRequests;
+
     public function index(): JsonResponse
     {
         $user = auth()->user();
@@ -35,11 +38,15 @@ class OrderController extends Controller
 
     public function store(): JsonResponse
     {
+        $this->authorize('create', Order::class);
+
         return response()->json(StoreOrderAction::execute(StoreOrderData::fromRequest(auth()->user())), 201);
     }
 
     public function destroy(Order $order): JsonResponse
     {
+        $this->authorize('destroy', Order::class);
+
         return DeleteOrderAction::execute($order);
     }
 }
