@@ -18,9 +18,12 @@ class NewsController extends Controller
 {
     use AuthorizesRequests;
 
-    public function index()
+    public function index(Request $request)
     {
-        $paginatedNews = News::orderBy('created_at', 'desc')->paginate(10);
+        $paginatedNews = News::filter($request->all())
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
+
         return NewsData::collect($paginatedNews);
     }
 

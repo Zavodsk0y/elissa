@@ -15,9 +15,12 @@ use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $paginatedServices = Service::orderBy('created_at', 'asc')->paginate(10);
+        $paginatedServices = Service::filter($request->all())
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
+
         return ServiceShowData::collect($paginatedServices);
     }
 

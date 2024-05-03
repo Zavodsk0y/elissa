@@ -11,7 +11,8 @@
         "laravel/tinker": "^2.9",
         "socialiteproviders/vkontakte": "^5.0",
         "spatie/laravel-data": "^4.5",
-        "spatie/laravel-permission": "^6.7"
+        "spatie/laravel-permission": "^6.7",
+        "tucker-eric/eloquentfilter": "^3.3"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

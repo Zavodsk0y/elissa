@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Data\Part\PartShowData;
+use App\Filters\Part\PartFilter;
+use EloquentFilter\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -11,8 +13,12 @@ use Spatie\LaravelData\WithData;
 
 class Part extends Model
 {
-    use HasFactory;
-    use WithData;
+    use HasFactory, WithData, Filterable;
+
+    public function modelFilter(): ?string
+    {
+        return $this->provideFilter(PartFilter::class);
+    }
 
     protected string $dataClass = PartShowData::class;
 

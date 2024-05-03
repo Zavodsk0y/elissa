@@ -18,9 +18,12 @@ class PartController extends Controller
 {
     use AuthorizesRequests;
 
-    public function index()
+    public function index(Request $request)
     {
-        $paginatedParts = Part::orderBy('created_at', 'asc')->paginate(10);
+        $paginatedParts = Part::filter($request->all())
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
+
         return PartShowData::collect($paginatedParts);
     }
 
