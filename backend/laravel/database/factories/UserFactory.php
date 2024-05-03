@@ -5,7 +5,6 @@ namespace Database\Factories;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -70,10 +69,10 @@ class UserFactory extends Factory
     public function admin(string $login = 'admin'): Factory
     {
         return $this->state(function (array $attributes) use ($login) {
-           return [
-               'email' => "{$login}@gmail.com",
-               'login' => $login
-           ];
+            return [
+                'email' => "{$login}@gmail.com",
+                'login' => $login
+            ];
         })->afterCreating(function (User $user) {
             $user->assignRole('authenticated user');
             $user->assignRole('employee');

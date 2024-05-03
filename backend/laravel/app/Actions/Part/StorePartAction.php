@@ -10,9 +10,15 @@ class StorePartAction
 {
     public static function execute(StorePartData $data): PartShowData
     {
-        $part = Part::create(
-            [...$data->all()]
-        );
+        $path = $data->image->store('parts_images', 'public');
+
+        $part = Part::create([
+            'category_id' => $data->categoryId,
+            'header' => $data->header,
+            'description' => $data->description,
+            'price' => $data->price,
+            'image_path' => $path,
+        ]);
 
         return PartShowData::fromModel($part);
     }

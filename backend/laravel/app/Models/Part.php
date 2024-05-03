@@ -22,7 +22,8 @@ class Part extends Model
         'category_id',
         'header',
         'description',
-        'price'
+        'price',
+        'image_path'
     ];
 
     public function category(): belongsTo

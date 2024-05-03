@@ -13,7 +13,8 @@ class Service extends Model
     protected $fillable = [
         'header',
         'description',
-        'price'
+        'price',
+        'image_path'
     ];
 
     public function request(): belongsTo

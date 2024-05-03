@@ -2,7 +2,10 @@
 
 namespace App\Data\Service;
 
+use Illuminate\Http\UploadedFile;
 use Spatie\LaravelData\Attributes\MapName;
+use Spatie\LaravelData\Attributes\Validation\Between;
+use Spatie\LaravelData\Attributes\Validation\Image;
 use Spatie\LaravelData\Attributes\Validation\Max;
 use Spatie\LaravelData\Attributes\Validation\StringType;
 use Spatie\LaravelData\Attributes\Validation\Unique;
@@ -19,7 +22,9 @@ class StoreServiceData extends Data
         #[StringType, Max(500), Required]
         public string $description,
         #[Required]
-        public float  $price
+        public float  $price,
+        #[Required, Image, Between(0, 4096)]
+        public readonly UploadedFile $image
     )
     {
     }
@@ -29,7 +34,8 @@ class StoreServiceData extends Data
         return [
             'header' => 'наименование услуги',
             'description' => 'описание',
-            'price' => 'цена'
+            'price' => 'цена',
+            'image' => 'изображение'
         ];
     }
 }

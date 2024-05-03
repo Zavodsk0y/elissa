@@ -11,9 +11,14 @@ class StoreServiceAction
 {
     public static function execute(StoreServiceData $data): ServiceShowData
     {
-        $service = Service::create(
-            [...$data->all()]
-        );
+        $path = $data->image->store('services_images', 'public');
+
+        $service = Service::create([
+            'header' => $data->header,
+            'description' => $data->description,
+            'price' => $data->price,
+            'image_path' => $path,
+        ]);
 
         return ServiceShowData::from($service);
     }

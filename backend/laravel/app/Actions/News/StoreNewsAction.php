@@ -10,11 +10,14 @@ class StoreNewsAction
 {
     public static function execute(StoreNewsData $data): NewsData
     {
-        $news = News::create(
-            [
-                ...$data->all(),
-            ]
-        );
+        $path = $data->image->store('news_images', 'public');
+
+        $news = News::create([
+            'title' => $data->title,
+            'text' => $data->text,
+            'image_path' => $path,
+        ]);
+
         return NewsData::fromModel($news);
     }
 }

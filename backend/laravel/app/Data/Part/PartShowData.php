@@ -16,7 +16,8 @@ class PartShowData extends Data
         public readonly string       $header,
         public readonly string       $description,
         public readonly float        $price,
-        public readonly CategoryData $category
+        public readonly CategoryData $category,
+        public string                $url
     )
     {
     }
@@ -28,7 +29,8 @@ class PartShowData extends Data
             $part->header,
             $part->description,
             $part->price,
-            CategoryData::from($part->category)
+            CategoryData::from($part->category),
+            asset('/storage/' . $part->image_path)
         );
     }
 
@@ -38,7 +40,8 @@ class PartShowData extends Data
             'categoryId' => 'идентификатор категории',
             'header' => 'наименование',
             'description' => 'описание',
-            'price' => 'цена'
+            'price' => 'цена',
+            'url' => 'путь к изображению'
         ];
     }
 }

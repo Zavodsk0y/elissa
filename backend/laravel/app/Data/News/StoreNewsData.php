@@ -3,7 +3,11 @@
 namespace App\Data\News;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
+use Spatie\LaravelData\Attributes\Validation\Between;
+use Spatie\LaravelData\Attributes\Validation\Image;
 use Spatie\LaravelData\Attributes\Validation\Max;
+use Spatie\LaravelData\Attributes\Validation\Size;
 use Spatie\LaravelData\Attributes\Validation\StringType;
 use Spatie\LaravelData\Data;
 use Symfony\Contracts\Service\Attribute\Required;
@@ -14,7 +18,9 @@ class StoreNewsData extends Data
         #[Required, StringType, Max(255)]
         public readonly string $title,
         #[Required, StringType, Max(1000)]
-        public readonly string $text
+        public readonly string $text,
+        #[Required, Image, Between(0, 4096)]
+        public readonly UploadedFile $image
     )
     {
     }
@@ -30,7 +36,8 @@ class StoreNewsData extends Data
     {
         return [
             'title' => 'заголовок',
-            'text' => 'текст'
+            'text' => 'текст',
+            'image' => 'изображение'
         ];
     }
 }

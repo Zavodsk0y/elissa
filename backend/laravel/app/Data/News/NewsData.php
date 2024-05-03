@@ -16,7 +16,8 @@ class NewsData extends Data
         #[Required, StringType, Max(255)]
         public ?string       $title,
         #[Required, StringType, Max(1000)]
-        public ?string       $text
+        public ?string       $text,
+        public ?string       $url
     )
     {
     }
@@ -33,15 +34,18 @@ class NewsData extends Data
         return new self(
             $news->id,
             $news->title,
-            $news->text
+            $news->text,
+            asset('/storage/' . $news->image_path)
         );
     }
 
     public static function attributes(...$args): array
     {
         return [
+            'id' => 'идентификатор новости',
             'title' => 'заголовок',
-            'text' => 'текст'
+            'text' => 'текст',
+            'url' => 'путь к изображению'
         ];
     }
 }
