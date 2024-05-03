@@ -4,8 +4,11 @@ namespace App\Data\Part;
 
 use App\Models\Part;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Spatie\LaravelData\Attributes\MapName;
+use Spatie\LaravelData\Attributes\Validation\Between;
 use Spatie\LaravelData\Attributes\Validation\Exists;
+use Spatie\LaravelData\Attributes\Validation\Image;
 use Spatie\LaravelData\Attributes\Validation\IntegerType;
 use Spatie\LaravelData\Attributes\Validation\Max;
 use Spatie\LaravelData\Attributes\Validation\StringType;
@@ -24,7 +27,9 @@ class UpdatePartData extends Data
         public readonly ?string $header,
         #[StringType, Max(500)]
         public readonly ?string $description,
-        public readonly ?float  $price
+        public readonly ?float  $price,
+        #[Image, Between(0, 4096)]
+        public readonly ?UploadedFile $image
     )
     {
     }
@@ -36,7 +41,8 @@ class UpdatePartData extends Data
             'categoryId' => $request->input('category_id') ?? $part->category_id,
             'header' => $request->input('header') ?? $part->header,
             'description' => $request->input('description') ?? $part->description,
-            'price' => $request->input('price') ?? $part->price
+            'price' => $request->input('price') ?? $part->price,
+            'image' => $request->file('image')
         ]);
     }
 
@@ -47,7 +53,8 @@ class UpdatePartData extends Data
             'categoryId' => 'идентификатор категории',
             'header' => 'наименование',
             'description' => 'описание',
-            'price' => 'цена'
+            'price' => 'цена',
+            'image' => 'изображение'
         ];
     }
 }
