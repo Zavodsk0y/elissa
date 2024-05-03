@@ -1,4 +1,8 @@
 *
 !news_seeders
 !news_seeders/*
+!parts_seeders
+!parts_seeders/*
+!services_seeders
+!services_seeders/*
 !.gitignore
