@@ -1,3 +1,6 @@
 *
 !public/
+!news/
+!news/temp
+!news/temp/*
 !.gitignore

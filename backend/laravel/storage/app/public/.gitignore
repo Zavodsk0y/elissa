@@ -1,2 +1,4 @@
 *
+!news_seeders
+!news_seeders/*
 !.gitignore
