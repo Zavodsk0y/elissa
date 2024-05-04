@@ -47,32 +47,40 @@ Route::get('/email/verify/{user}/{hash}', [EmailVerificationController::class, '
     ->name('verification.verify');
 
 Route::group(['middleware' => ['auth:sanctum', EnsureVerifiedEmail::class]], function () {
+    // SET EMAIL & PASSWORD
     Route::post('/users/credentials', ChangeEmailAndPasswordController::class);
 
+    // ABOUT ME
     Route::get('users/me', AbouteMeController::class)->withoutMiddleware(EnsureVerifiedEmail::class);
 
+    // CART
     Route::post('/cart/{part}', [CartController::class, 'addToCart']);
     Route::delete('/cart/{part}', [CartController::class, 'removeFromCart']);
     Route::get('/cart', [CartController::class, 'index']);
 
+    // NEWS
     Route::resource('news', NewsController::class)->only('store', 'update', 'destroy');
 
+    // CATEGORIES
     Route::resource('categories', CategoryController::class)->only('store', 'update', 'destroy');
 
+    // PARTS
     Route::resource('parts', PartController::class)->only('store', 'update', 'destroy');
 
+    // SERVICES
     Route::resource('services', ServiceController::class)->only('store', 'update', 'destroy');
 
+    // REQUESTS
     Route::resource('requests', RequestController::class)->except('update');
     Route::patch('/requests/{request}', UpdateRequestStatusController::class);
 
+    // ORDERS
     Route::resource('orders', OrderController::class)->except('update');
     Route::patch('/orders/{order}', UpdateOrderStatusController::class);
 
-
+    // REFERRAL
     Route::post('/referral', GenereateReferralCodeController::class);
     Route::post('/refer', EnterReferralCodeController::class);
-
 
     // ADMIN FUNCTIONAL
     Route::post('users/{user}/assign', AssignEmployeeController::class);
