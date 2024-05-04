@@ -51,6 +51,7 @@ class RolesSeeder extends Seeder
             'show users',
             'assign employee',
             'unsign employee',
+            'history interaction'
         ];
 
         $permissions = collect($arrayOfPermissionNames)->map(function ($permission) {
@@ -83,7 +84,7 @@ class RolesSeeder extends Seeder
             $employee->givePermissionTo($item);
         }
 
-        $adminPermissions = ['show users', 'assign employee', 'unsign employee'];
+        $adminPermissions = ['show users', 'assign employee', 'unsign employee', 'history interaction'];
         foreach ($adminPermissions as $item) {
             $admin->givePermissionTo($item);
         }

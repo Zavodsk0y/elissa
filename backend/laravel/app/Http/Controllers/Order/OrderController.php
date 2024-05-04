@@ -33,6 +33,8 @@ class OrderController extends Controller
 
     public function show(Order $order): OrderData
     {
+        $this->authorize('show', $order);
+
         return OrderData::fromModel($order);
     }
 

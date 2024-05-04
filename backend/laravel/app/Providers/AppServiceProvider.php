@@ -9,6 +9,7 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Part;
 use App\Models\Request;
+use App\Models\User;
 use App\Policies\Cart\CartPolicy;
 use App\Policies\Category\CategoryPolicy;
 use App\Policies\News\NewsPolicy;
@@ -46,5 +47,17 @@ class AppServiceProvider extends ServiceProvider
         Gate::policy(Request::class, RequestPolicy::class);
         Gate::policy(OrderItem::class, OrderPolicy::class);
         Gate::policy(Order::class, OrderPolicy::class);
+
+        Gate::define('assign-roles', function (User $user) {
+            return $user->hasRole('admin') && $user->hasAllPermissions(['assign employee', 'unsign employee']);
+        });
+
+        Gate::define('view-users', function (User $user) {
+            return $user->hasRole('admin') && $user->hasPermissionTo('show users');
+        });
+
+        Gate::define('history-interaction', function (User $user) {
+            return $user->hasRole('admin') && $user->hasPermissionTo('history interaction');
+        });
     }
 }

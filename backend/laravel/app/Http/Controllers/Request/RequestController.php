@@ -25,6 +25,8 @@ class RequestController extends Controller
 
     public function show(Request $request): RequestData
     {
+        $this->authorize('show', $request);
+
         return RequestData::fromModel($request);
     }
 
