@@ -16,9 +16,9 @@ class StoreNewsData extends Data
 {
     public function __construct(
         #[Required, StringType, Max(255)]
-        public readonly string $title,
+        public readonly string       $title,
         #[Required, StringType, Max(1000)]
-        public readonly string $text,
+        public readonly string       $text,
         #[Required, Image, Between(0, 4096)]
         public readonly UploadedFile $image
     )

@@ -9,7 +9,7 @@ class StoreCategoryData extends Data
 {
     public function __construct(
         #[Unique('parts_categories', 'name')]
-        public string $name
+        public readonly string $name
     )
     {
     }

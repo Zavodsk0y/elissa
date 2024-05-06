@@ -17,7 +17,7 @@ class PartShowData extends Data
         public readonly string       $description,
         public readonly float        $price,
         public readonly CategoryData $category,
-        public string                $url
+        public readonly string       $url
     )
     {
     }

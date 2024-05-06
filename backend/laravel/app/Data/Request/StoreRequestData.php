@@ -21,9 +21,9 @@ class StoreRequestData extends Data
     public function __construct(
         public readonly int    $userId,
         #[Required, Exists('services', 'id')]
-        public readonly int     $serviceId,
+        public readonly int    $serviceId,
         #[Required, Regex('/^\+7\d{10}$/')]
-        public readonly string  $phone,
+        public readonly string $phone,
         #[WithCast(EnumCast::class)]
         #[Prohibited]
         public readonly string $status = RequestStatus::Created->value

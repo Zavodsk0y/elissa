@@ -17,13 +17,15 @@ use Spatie\LaravelData\Mappers\SnakeCaseMapper;
 class StoreOrderData extends Data
 {
     public function __construct(
-        public readonly ?int $userId,
-        public readonly float $totalAmount,
-        public readonly ?float $referralAmount,
+        public readonly ?int    $userId,
+        public readonly float   $totalAmount,
+        public readonly ?float  $referralAmount,
         #[WithCast(EnumCast::class)]
         #[Prohibited]
         public readonly ?string $status = OrderStatus::Created->value
-    ) {}
+    )
+    {
+    }
 
     public static function fromRequest(User $user): self
     {

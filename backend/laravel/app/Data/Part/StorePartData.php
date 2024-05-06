@@ -19,13 +19,13 @@ class StorePartData extends Data
 {
     public function __construct(
         #[IntegerType, Exists('parts_categories', 'id'), Required]
-        public int    $categoryId,
+        public readonly int          $categoryId,
         #[StringType, Max(255), Required]
-        public string $header,
+        public readonly string       $header,
         #[StringType, Max(500), Required]
-        public string $description,
+        public readonly string       $description,
         #[Required]
-        public float  $price,
+        public readonly float        $price,
         #[Required, Image, Between(0, 4096)]
         public readonly UploadedFile $image
     )

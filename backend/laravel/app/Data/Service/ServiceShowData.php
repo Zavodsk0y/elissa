@@ -8,11 +8,11 @@ use Spatie\LaravelData\Data;
 class ServiceShowData extends Data
 {
     public function __construct(
-        public int    $id,
-        public string $header,
-        public string $description,
-        public float  $price,
-        public string $url
+        public readonly int    $id,
+        public readonly string $header,
+        public readonly string $description,
+        public readonly float  $price,
+        public readonly string $url
     )
     {
     }

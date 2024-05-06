@@ -16,9 +16,9 @@ class UpdateNewsData extends Data
 {
     public function __construct(
         #[IntegerType, Exists('news', 'id')]
-        public readonly ?int $id,
-        public readonly ?string $title,
-        public readonly ?string $text,
+        public readonly ?int          $id,
+        public readonly ?string       $title,
+        public readonly ?string       $text,
         #[Image, Between(0, 4096)]
         public readonly ?UploadedFile $image
     )

@@ -20,14 +20,14 @@ class UpdatePartData extends Data
 {
     public function __construct(
         #[IntegerType, Exists('repair_parts', 'id')]
-        public readonly ?int    $id,
+        public readonly ?int          $id,
         #[IntegerType, Exists('parts_categories', 'id')]
-        public readonly ?int    $categoryId,
+        public readonly ?int          $categoryId,
         #[StringType, Max(255)]
-        public readonly ?string $header,
+        public readonly ?string       $header,
         #[StringType, Max(500)]
-        public readonly ?string $description,
-        public readonly ?float  $price,
+        public readonly ?string       $description,
+        public readonly ?float        $price,
         #[Image, Between(0, 4096)]
         public readonly ?UploadedFile $image
     )

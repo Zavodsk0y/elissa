@@ -8,11 +8,13 @@ use Spatie\LaravelData\Data;
 class OrderData extends Data
 {
     public function __construct(
-        public readonly int $id,
+        public readonly int    $id,
         public readonly string $status,
-        public readonly float $totalAmount,
-        public readonly array $items,
-    ) {}
+        public readonly float  $totalAmount,
+        public readonly array  $items,
+    )
+    {
+    }
 
     public static function fromModel(Order $order): self
     {

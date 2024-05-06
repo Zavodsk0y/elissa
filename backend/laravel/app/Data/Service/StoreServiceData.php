@@ -18,11 +18,11 @@ class StoreServiceData extends Data
 {
     public function __construct(
         #[StringType, Max(255), Required, Unique('services', 'header')]
-        public string $header,
+        public readonly string       $header,
         #[StringType, Max(500), Required]
-        public string $description,
+        public readonly string       $description,
         #[Required]
-        public float  $price,
+        public readonly float        $price,
         #[Required, Image, Between(0, 4096)]
         public readonly UploadedFile $image
     )

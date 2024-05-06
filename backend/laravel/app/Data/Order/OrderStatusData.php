@@ -17,5 +17,7 @@ class OrderStatusData extends Data
         #[WithCast(EnumCast::class)]
         #[Required]
         public readonly OrderStatus $status
-    ) {}
+    )
+    {
+    }
 }

@@ -13,9 +13,9 @@ class UpdateCategoryData extends Data
 {
     public function __construct(
         #[IntegerType, Exists('parts_categories', 'id')]
-        public readonly ?int $id,
+        public readonly ?int   $id,
         #[Unique('parts_categories')]
-        public string        $name
+        public readonly string $name
     )
     {
     }

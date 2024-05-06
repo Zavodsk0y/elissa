@@ -12,12 +12,12 @@ use Symfony\Contracts\Service\Attribute\Required;
 class NewsData extends Data
 {
     public function __construct(
-        public readonly ?int $id,
+        public readonly ?int    $id,
         #[Required, StringType, Max(255)]
-        public ?string       $title,
+        public readonly ?string $title,
         #[Required, StringType, Max(1000)]
-        public ?string       $text,
-        public ?string       $url
+        public readonly ?string $text,
+        public readonly ?string $url
     )
     {
     }
