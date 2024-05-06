@@ -15,10 +15,10 @@ return new class extends Migration
         Schema::create('order_status_history', function (Blueprint $table) {
             $table->id();
             $table->integer('order_id');
-            $table->string('previous_status')->nullable();
-            $table->string('new_status')->nullable();
-            $table->integer('changed_by_user_id')->nullable();
-            $table->timestamp('created_at')->nullable();
+            $table->string('previous_status');
+            $table->string('new_status');
+            $table->integer('changed_by_user_id');
+            $table->timestamp('created_at');
         });
     }
 

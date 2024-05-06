@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('referrals', function (Blueprint $table) {
             $table->id();
-            $table->integer('referring_user_id')->nullable();
-            $table->integer('referred_user_id')->nullable();
+            $table->integer('referring_user_id');
+            $table->integer('referred_user_id');
             $table->timestamps();
         });
     }

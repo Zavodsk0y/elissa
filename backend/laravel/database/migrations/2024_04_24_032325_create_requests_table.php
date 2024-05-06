@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('requests', function (Blueprint $table) {
             $table->id();
-            $table->string('phone')->nullable();
-            $table->string('status')->nullable();
-            $table->integer('user_id')->nullable();
-            $table->integer('service_id')->nullable();
+            $table->string('phone');
+            $table->string('status');
+            $table->integer('user_id');
+            $table->integer('service_id');
             $table->timestamp('activated_at')->nullable();
             $table->timestamps();
         });

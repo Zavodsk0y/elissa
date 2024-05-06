@@ -14,10 +14,10 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->decimal('total_amount')->nullable();
+            $table->decimal('total_amount');
             $table->decimal('referral_amount')->nullable();
-            $table->string('status')->nullable();
-            $table->integer('user_id')->nullable();
+            $table->string('status');
+            $table->integer('user_id');
             $table->timestamp('activated_at')->nullable();
             $table->timestamps();
         });
