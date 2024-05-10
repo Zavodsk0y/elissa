@@ -24,6 +24,7 @@ use App\Http\Controllers\User\GenereateReferralCodeController;
 use App\Http\Controllers\User\LoginUserController;
 use App\Http\Controllers\User\RegistrationUserController;
 use App\Http\Controllers\User\ShowUsersController;
+use App\Http\Controllers\User\UserResetPasswordController;
 use App\Http\Controllers\User\VkontakteAuthenticationController;
 use App\Http\Middleware\EnsureVerifiedEmail;
 use Illuminate\Support\Facades\Route;
@@ -45,6 +46,12 @@ Route::resource('/services', ServiceController::class)->only('index, show');
 Route::get('/email/verify/{user}/{hash}', [EmailVerificationController::class, 'verify'])
     ->middleware('signed')
     ->name('verification.verify');
+
+Route::post('reset-password', [UserResetPasswordController::class, 'sendEmail']);
+
+Route::get('reset-password', [UserResetPasswordController::class, 'resetPassword'])
+    ->middleware('signed')
+    ->name('reset-password');
 
 Route::group(['middleware' => ['auth:sanctum', EnsureVerifiedEmail::class]], function () {
     // SET EMAIL & PASSWORD
