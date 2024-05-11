@@ -5,6 +5,7 @@ import RegistrationView from "@/views/RegistrationView.vue"
 import LoginView from "@/views/LoginView.vue";
 import ResetPasswordView from "@/views/ResetPasswordView.vue";
 import ServiceView from "@/views/ServiceView.vue";
+import NewsView from "@/views/NewsView.vue";
 
 const routes = [
   {
@@ -36,6 +37,11 @@ const routes = [
     path: '/services',
     name: 'services',
     component: ServiceView
+  },
+  {
+    path: '/news',
+    name: 'news',
+    component: NewsView
   }
 ]
 

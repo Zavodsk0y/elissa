@@ -67,7 +67,7 @@
     height: 1.188rem;
 }
 
-.icon-vk:hover, .icon-email:hover {
+.icon-vk:hover, .icon-email:hover, .icon-whatsapp:hover {
     cursor: pointer;
 }
 
@@ -111,12 +111,24 @@
     margin-top: 5rem;
 }
 
+.mb_2 {
+    margin-bottom: 2rem;
+}
+
 .mb_5 {
     margin-bottom: 5rem;
 }
 
 .ml-2 {
     margin-left: 2rem;
+}
+
+.ml-15 {
+    margin-left: 15rem;
+}
+
+.mr-5 {
+    margin-right: 5rem;
 }
 
 .lh-2 {
@@ -323,7 +335,75 @@ a {
     padding: 0;
 }
 
-
 body > section.goOnRecord > div > h3.d-f.j-c-c.fs-24px.fw-400.c-w {
     margin-bottom: 5px;
+}
+
+/* секция новостей */
+
+.news1Info {
+    padding-left: 2rem;
+    padding-top: 25rem;
+}
+
+.news3Title {
+    margin: 0 0 0 2rem;
+}
+
+.c-black {
+    color: #393939;;
+}
+
+.checkNews3, .checkNews4 {
+    background: none;
+    width: 11.938rem;
+    height: 2.875rem;
+    border: 2px solid #FFC513;
+    transition: .5s;
+    margin-left: auto;
+}
+
+.checkNews3 {
+    margin-top: 1rem;
+}
+
+.checkNews3:hover, .checkNews4:hover {
+    transition: .5s;
+    cursor: pointer;
+    color: white;
+    background-color: #FFC513;
+}
+
+.reputationText {
+    display: flex;
+    flex-direction: column;
+    margin-top: -2.7rem;
+    margin-left: 5rem;
+    line-height: 3rem;
+}
+
+.columnAbout > li {
+    padding-top: 1rem;
+}
+
+.columnAbout > li:before{
+    content: '✔';
+    color: black;
+    padding-right: 1rem;
+}
+
+.aboutTitle {
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+}
+
+.reasonsForChoose {
+    background-color: #393939;
+    height: 25.375rem;
+}
+
+.numberIcon {
+    height: 5.563rem;
+    margin-right: 2rem;
+    margin-top: 6rem;
+    padding-left: 2rem;
 }
