@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import AboutView from "@/views/AboutView.vue";
-import RegistrationView from "@/views/RegistrationView.vue"
-import LoginView from "@/views/LoginView.vue";
-import ResetPasswordView from "@/views/ResetPasswordView.vue";
-import ServiceView from "@/views/ServiceView.vue";
-import NewsView from "@/views/NewsView.vue";
+import HomeView from '../components/HomeView.vue'
+import AboutView from "@/components/AboutView.vue";
+import RegistrationView from "@/components/RegistrationView.vue"
+import LoginView from "@/components/LoginView.vue";
+import ResetPasswordView from "@/components/ResetPasswordView.vue";
+import ServiceView from "@/components/ServiceView.vue";
+import NewsView from "@/components/NewsView.vue";
 
 const routes = [
   {
