@@ -197,7 +197,6 @@ ul > li:before{
     width: 10rem;
     height: 2.875rem;
     border: 2px solid #FFC513;
-    padding: 16px;
     transition: .5s;
 }
 
@@ -288,7 +287,6 @@ ul > li:before{
 }
 
 .sendRegistrationForm, .sendLoginForm {
-    margin: auto;
     background: none;
     width: 18.5rem;
     height: 4.1875rem;
@@ -297,8 +295,22 @@ ul > li:before{
     transition: .5s;
 }
 
-.sendLoginForm {
-    margin: 5rem 0 0 17rem;
+.loginVk, .registrationVk {
+    margin: auto;
+    background: #3D50FF;
+    width: 18.5rem;
+    height: 4.1875rem;
+    border: none;
+    transition: .5s;
+    color: white;
+    text-decoration: none;
+}
+
+.loginVk:hover, .registrationVk:hover {
+    cursor: pointer;
+    transition: .5s;
+    background-color: #1d36fc;
+    color: black;
 }
 
 .sendRegistrationForm:hover, .sendLoginForm:hover, .openRecordButton:hover {
@@ -306,6 +318,10 @@ ul > li:before{
     cursor: pointer;
     color: white;
     background-color: #FFC513;
+}
+
+.sendLoginForm {
+    margin: 5rem auto auto;
 }
 
 a {

@@ -12,8 +12,9 @@
                     <label for="putPassword" class="fs-24px d-f j-c-c mt-5">Пароль</label><br><br>
                     <input id="putPassword" class="fs-17px d-f j-c-c mt-5" type="password" required><br><br><br>
 
-                    <button type="submit" class="fs-24px sendLoginForm d-f j-c-c mt-5">Отправить</button><br><br>
-                    <router-link to="/reset_password" class="fs-24px d-f j-c-c mt-5">Забыли пароль?</router-link>
+                    <button type="submit" class="fs-24px sendLoginForm d-f j-c-c a-i-c mt-5">Отправить</button><br><br>
+                    <router-link to="login_vk" class="fs-24px fw-400 loginVk d-f j-c-c a-i-c">Войти через ВКонтакте</router-link>
+                    <router-link to="/reset_password" class="fs-24px d-f j-c-c mt_1">Забыли пароль?</router-link>
                 </form>
 
             </div>

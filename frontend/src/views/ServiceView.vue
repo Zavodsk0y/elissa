@@ -120,7 +120,7 @@
 
             <label for="putAdditionally" class="fs-17px">Дополнительно</label><br><br>
             <input id="putAdditionally" class="fs-17px" type="text"><br><br><br>
-            <button type="submit" class="sendFormButton d-f a-i-c fs-24px">Отправить</button>
+            <button type="submit" class="sendFormButton d-f j-c-c a-i-c fs-24px">Отправить</button>
             <button @click="showModal = false" class="closeModalButton">X</button>
           </div>
 

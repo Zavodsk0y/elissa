@@ -27,7 +27,11 @@
                     <label for="putPassword2" class="fs-17px">Повторите пароль</label><br><br>
                     <input id="putPassword2" class="fs-17px" type="password"><br><br><br><br>
 
-                    <button type="submit" class="sendRegistrationForm d-f j-c-c fs-24px">Отправить</button>
+                    <div class="d-f f-d-r">
+                        <button type="submit" class="sendRegistrationForm d-f j-c-c fs-24px">Отправить</button>
+                        <router-link to="login_vk" class="fs-24px fw-400 registrationVk d-f j-c-c a-i-c t-a-c">Регистрация через ВКонтакте</router-link>
+                    </div>
+
                 </form>
                 </div>
             </div>

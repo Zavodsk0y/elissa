@@ -13,7 +13,6 @@
           <router-link to="/news" class="fs-17px c-b">Новости</router-link>
           <router-link to="/about" class="fs-17px c-b">О нас</router-link>
           <router-link to="/services" class="fs-17px c-b">Услуги</router-link>
-          <router-link to="/vacancies" class="fs-17px c-b">Вакансии</router-link>
           <router-link to="/registration" class="fs-17px c-b">Регистрация</router-link>
           <router-link to="/login" class="fs-17px c-b">Вход</router-link>
         </div>
@@ -53,7 +52,6 @@
           <router-link to="/news" class="fs-17px c-b">Новости</router-link>
           <router-link to="/about" class="fs-17px c-b">О нас</router-link>
           <router-link to="/services" class="fs-17px c-b">Услуги</router-link>
-          <router-link to="/vacancies" class="fs-17px c-b">Вакансии</router-link>
           <router-link to="/registration" class="fs-17px c-b">Регистрация</router-link>
           <router-link to="/login" class="fs-17px c-b">Вход</router-link>
         </div>
