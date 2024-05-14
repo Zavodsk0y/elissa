@@ -200,7 +200,7 @@ ul > li:before{
     transition: .5s;
 }
 
-.sendFormButton:hover {
+.sendFormButton:hover, .updateProfileButton:hover {
     transition: .5s;
     cursor: pointer;
     color: white;
@@ -260,7 +260,7 @@ ul > li:before{
     background-color: #393939;
 }
 
-.registrationForm, .loginForm, .resetPasswordForm {
+.registrationForm, .loginForm, .resetPasswordForm, .profileForm {
     margin: auto;
     width: 53.125rem;
     height: 61.375rem;
@@ -273,7 +273,7 @@ ul > li:before{
     height: 46.375rem;
 }
 
-.registrationForm > input, .loginForm > input, .resetPasswordForm > input {
+.registrationForm > input, .loginForm > input, .resetPasswordForm > input, .profileForm > input {
     width: 37.5rem;
     border: none;
     border-bottom: 1px solid black;
@@ -341,7 +341,7 @@ a {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
 }
 
-.openRecordButton {
+.openRecordButton, .updateProfileButton {
     margin: auto;
     background: none;
     width: 17.75rem;
@@ -422,4 +422,9 @@ body > section.goOnRecord > div > h3.d-f.j-c-c.fs-24px.fw-400.c-w {
     margin-right: 2rem;
     margin-top: 6rem;
     padding-left: 2rem;
+}
+
+.profileForm > input::placeholder {
+    color: black;
+    opacity: .8;
 }

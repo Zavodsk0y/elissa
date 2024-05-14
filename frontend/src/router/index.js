@@ -1,47 +1,54 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../components/HomeView.vue'
-import AboutView from "@/components/AboutView.vue";
-import RegistrationView from "@/components/RegistrationView.vue"
-import LoginView from "@/components/LoginView.vue";
-import ResetPasswordView from "@/components/ResetPasswordView.vue";
-import ServiceView from "@/components/ServiceView.vue";
-import NewsView from "@/components/NewsView.vue";
+import HomeComponent from "@/components/HomeComponent.vue";
+import AboutComponent from "@/components/AboutComponent.vue";
+import RegistrationComponent from "@/components/RegistrationComponent.vue";
+import LoginComponent from "@/components/LoginComponent.vue";
+import ResetPasswordComponent from "@/components/ResetPasswordComponent.vue";
+import ServiceComponent from "@/components/ServiceComponent.vue";
+import NewsComponent from "@/components/NewsComponent.vue";
+import ProfileComponent from "@/components/ProfileComponent.vue";
+
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: HomeComponent
   },
   {
     path: '/about',
     name: 'about',
-    component: AboutView
+    component: AboutComponent
   },
   {
     path: '/registration',
     name: 'registration',
-    component: RegistrationView
+    component: RegistrationComponent
   },
   {
     path: '/login',
     name: 'login',
-    component: LoginView
+    component: LoginComponent
   },
   {
     path: '/reset_password',
     name: 'reset_password',
-    component: ResetPasswordView
+    component: ResetPasswordComponent
   },
   {
     path: '/services',
     name: 'services',
-    component: ServiceView
+    component: ServiceComponent
   },
   {
     path: '/news',
     name: 'news',
-    component: NewsView
+    component: NewsComponent
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: ProfileComponent
   }
 ]
 

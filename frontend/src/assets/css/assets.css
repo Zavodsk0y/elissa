@@ -99,3 +99,12 @@ footer {
     background-image: url("../img/about-background-image-2.png");
 }
 
+.profile {
+    height: 60rem;
+    background-image: url("../img/backgroundMain.png");
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+
