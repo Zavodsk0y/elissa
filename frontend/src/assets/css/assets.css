@@ -1,0 +1,109 @@
+/* Импорт других css-файлов */
+@import 'elements.css';
+@import 'grids.css';
+@import 'fonts.css';
+
+/* Сброс стилей */
+body, template {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+}
+
+.wrapper {
+    margin: 0 auto;
+    max-width: 1440px;
+}
+
+/* Стилизация header'a */
+header {
+    height: 6rem;
+    background-color: #FFC513;
+}
+
+/* Стилизация footer'а */
+
+footer {
+    height: 10rem;
+    background-color: #FFC513;
+}
+
+.c-b {
+    color: #002C6F;
+}
+
+.c-y {
+    color: #FFC513;
+}
+
+.c-w {
+    color: white;
+}
+
+/* секции на главной странице */
+
+.aboutCompany {
+    height: 43rem;
+    background-image: url("../img/backgroundMain.png");
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+.sendForm {
+    height: 55rem;
+    background-image: url("../img/background-form.png");
+}
+
+.usersReviews {
+    height: 36rem;
+    background-color: #393939;
+}
+
+/* секция услуг */
+
+.servicesInfo {
+    background-image: url("../img/service_background_image.png");
+}
+
+.goOnRecord {
+    height: 22rem;
+    background-image: url("../img/go-to-record-background-image.png");
+}
+
+/* секция новостей */
+
+.news1 {
+    width: 55.875rem;
+    height: 33.313rem;
+    background-image: url("../img/news-image-1.png");
+}
+
+.news2 {
+    width: 25.875rem;
+    height: 33.313rem;
+    background-image: url("../img/news-image-2.png");
+}
+
+/* секция О нас */
+
+.elissaBest1 {
+    height: 27.938rem;
+    background-image: url("../img/about-background-image-1.png");
+}
+
+.elissaBest2 {
+    height: 39.375rem;
+    background-image: url("../img/about-background-image-2.png");
+}
+
+.profile {
+    height: 54rem;
+    background-color: #393939;
+}
+
+.userRequests {
+    background-image: url("../img/background-form.png");
+}
