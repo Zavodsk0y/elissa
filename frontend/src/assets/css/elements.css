@@ -191,13 +191,17 @@ ul > li:before{
     font-style: oblique;
 }
 
-.sendFormButton {
+.sendFormButton, .updateProfileButton {
     margin: auto;
     background: none;
     width: 10rem;
     height: 2.875rem;
     border: 2px solid #FFC513;
     transition: .5s;
+}
+
+.updateProfileButton {
+    width: 20.5rem;
 }
 
 .sendFormButton:hover, .updateProfileButton:hover {
@@ -260,13 +264,22 @@ ul > li:before{
     background-color: #393939;
 }
 
-.registrationForm, .loginForm, .resetPasswordForm, .profileForm {
+.registrationForm, .loginForm, .resetPasswordForm, .profileForm, .addWorkerForm {
     margin: auto;
     width: 53.125rem;
     height: 61.375rem;
     background-color: white;
     padding: 1rem 0 0 3rem;
     border-radius: 5px;
+}
+
+.addWorkerForm {
+    border: 2px solid black;
+    height: 38rem;
+}
+
+.profileForm {
+    height: 49rem;
 }
 
 .resetPasswordForm {
@@ -341,7 +354,7 @@ a {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
 }
 
-.openRecordButton, .updateProfileButton {
+.openRecordButton {
     margin: auto;
     background: none;
     width: 17.75rem;
@@ -424,7 +437,83 @@ body > section.goOnRecord > div > h3.d-f.j-c-c.fs-24px.fw-400.c-w {
     padding-left: 2rem;
 }
 
-.profileForm > input::placeholder {
+.profilePart1 > input, .profilePart2 > input {
+    width: 20.5rem;
+    border: none;
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+    outline: none;
+}
+
+
+.profilePart2 {
+    margin-left: 5rem;
+}
+
+.profileForm .profilePart1 input::placeholder,
+.profilePart2 input::placeholder {
     color: black;
-    opacity: .8;
+}
+
+.deleteItemButton, .addItemButton {
+    background-color: #fc4949;
+    width: 6rem;
+    height: 6rem;
+}
+
+.addItemButton {
+    background-color: #10bb10;
+}
+
+.makeOrderButton {
+    width: 14rem;
+    height: 7rem;
+    border-radius: 5px;
+    background-color: green;
+}
+
+.order1, .order2, .order3, .request1, .request2, .request3 {
+    width: 24.375rem;
+}
+
+.request1, .request2, .request3 {
+    border: 2px solid white;
+    padding: 20px;
+}
+
+.makeOrderButton:hover, .addItemButton:hover, .deleteItemButton:hover {
+    cursor: pointer;
+}
+
+.request1 > select, .request2 > select, .request3 > select {
+    width: 24.5rem;
+    border: none;
+    border-bottom: 1px solid white;
+    background: none;
+    padding-bottom: 5px;
+    outline: none;
+}
+
+.request1 > select option, .request2 > select option, .request3 > select option {
+    background: black;
+}
+
+.worker1, .worker2, .worker3 {
+    border: 2px solid black;
+    padding: 20px;
+}
+
+.fireWorkerButton {
+    margin: auto;
+    background: none;
+    width: 13rem;
+    height: 3.575rem;
+    border: 3px solid #ff134a;
+    color: black;
+    transition: .5s;
+}
+
+.fireWorkerButton:hover {
+    cursor: pointer;
+    background-color: #ff4f78;
 }

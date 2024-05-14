@@ -100,11 +100,10 @@ footer {
 }
 
 .profile {
-    height: 60rem;
-    background-image: url("../img/backgroundMain.png");
-    background-size: cover;
-    background-position: center;
-    overflow: hidden;
+    height: 54rem;
+    background-color: #393939;
 }
 
-
+.userRequests {
+    background-image: url("../img/background-form.png");
+}

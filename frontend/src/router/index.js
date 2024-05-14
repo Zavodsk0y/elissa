@@ -7,6 +7,11 @@ import ResetPasswordComponent from "@/components/ResetPasswordComponent.vue";
 import ServiceComponent from "@/components/ServiceComponent.vue";
 import NewsComponent from "@/components/NewsComponent.vue";
 import ProfileComponent from "@/components/ProfileComponent.vue";
+import CartComponent from "@/components/CartComponent.vue";
+import RequestComponent from "@/components/RequestComponent.vue";
+import AdminProfileComponent from "@/components/AdminProfileComponent.vue";
+import UsersRequestComponent from "@/components/UsersRequestComponent.vue";
+import WorkersComponent from "@/components/WorkersComponent.vue";
 
 
 const routes = [
@@ -49,6 +54,31 @@ const routes = [
     path: '/profile',
     name: 'profile',
     component: ProfileComponent
+  },
+  {
+    path: '/cart',
+    name: 'cart',
+    component: CartComponent
+  },
+  {
+    path: '/requests',
+    name: 'requests',
+    component: RequestComponent
+  },
+  {
+    path: '/admin_profile',
+    name: 'admin_profile',
+    component: AdminProfileComponent
+  },
+  {
+    path: '/users_requests',
+    name: 'users_requests',
+    component: UsersRequestComponent
+  },
+  {
+    path: '/workers',
+    name: 'workers',
+    component: WorkersComponent
   }
 ]
 
