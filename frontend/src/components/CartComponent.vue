@@ -16,7 +16,6 @@
                 <div class="deleteItemButton fs-48px d-f a-i-c j-c-c c-w">-</div>
               </div><br><br>
 
-              <div class="makeOrderButton fs-32px d-f a-i-c j-c-c c-w">Оплатить</div>
             </div>
 
             <div class="order2">
@@ -30,9 +29,6 @@
                 <div class="addItemButton fs-48px d-f a-i-c j-c-c c-w">+</div>&nbsp;
                 <div class="deleteItemButton fs-48px d-f a-i-c j-c-c c-w">-</div>
               </div><br><br>
-
-              <div class="makeOrderButton fs-32px d-f a-i-c j-c-c c-w">Оплатить</div>
-
 
             </div>
 
@@ -48,7 +44,7 @@
                 <div class="deleteItemButton fs-48px d-f a-i-c j-c-c c-w">-</div>
               </div><br><br>
 
-              <div class="makeOrderButton fs-32px d-f a-i-c j-c-c c-w">Оплатить</div><br><br>
+              <button class="makeOrderButton fs-32px d-f a-i-c j-c-c c-w">Оформить заказ</button><br><br>
 
 
             </div>

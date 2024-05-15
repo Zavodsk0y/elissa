@@ -28,7 +28,7 @@
                     <input id="putPassword2" class="fs-17px" v-model="form.password_confirmation" type="password"><br><br><br><br>
 
                     <div class="d-f f-d-r">
-                        <button type="submit" class="sendRegistrationForm d-f j-c-c fs-24px">Отправить</button>
+                        <button type="submit" class="sendRegistrationForm d-f j-c-c fs-24px">Зарегистрироваться</button>
                         <router-link to="login_vk" class="fs-24px fw-400 registrationVk d-f j-c-c a-i-c t-a-c">Регистрация через ВКонтакте</router-link>
                     </div>
 

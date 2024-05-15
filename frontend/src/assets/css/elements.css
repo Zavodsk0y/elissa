@@ -466,10 +466,12 @@ body > section.goOnRecord > div > h3.d-f.j-c-c.fs-24px.fw-400.c-w {
 }
 
 .makeOrderButton {
-    width: 14rem;
+    width: 20rem;
     height: 7rem;
     border-radius: 5px;
+    margin-left: 5rem;
     background-color: green;
+    border: none;
 }
 
 .order1, .order2, .order3, .request1, .request2, .request3 {
