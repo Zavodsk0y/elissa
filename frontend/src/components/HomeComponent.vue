@@ -167,13 +167,11 @@
                     <img src="../assets/img/gallery-photo-1.png" class="galleryImage" loading="lazy" alt="Нет">
                     <img src="../assets/img/gallery-photo-2.png" class="galleryImage" loading="lazy" alt="Нет">
                     <img src="../assets/img/gallery-photo-3.png" class="galleryImage" loading="lazy" alt="Нет">
-                    <img src="../assets/img/gallery-photo-4.png" class="galleryImage" loading="lazy" alt="Нет">
                 </div>
                 <div>
                     <img src="../assets/img/gallery-photo-5.png" loading="lazy" alt="Нет">
                     <img src="../assets/img/gallery-photo-6.png" loading="lazy" alt="Нет">
                     <img src="../assets/img/gallery-photo-7.png" loading="lazy" alt="Нет">
-                    <img src="../assets/img/gallery-photo-8.png" loading="lazy" alt="Нет">
                 </div>
             </div>
         </div>
@@ -184,13 +182,13 @@
         <div class="wrapper mt-1">
             <h2 class="fs-32px c-w d-f j-c-c pt-2">Хотите оставить заявку? Эта форма - для Вас!</h2>
             <div class="mt_3">
-                <div class="sendRequestForm">
+                <form class="sendRequestForm" method="POST" @submit.prevent="sendRequest">
                     <h3 class="fs-24px">Форма для записи</h3>
                     <label for="surname_name" class="fs-17px">Имя, фамилия</label><br><br>
-                    <input id="surname_name" class="fs-17px" type="text" placeholder="Иванов Иван" required><br><br><br>
+                    <input id="surname_name" class="fs-17px" v-model="surname_name" type="text" placeholder="Иванов Иван" required><br><br><br>
 
                     <label for="chooseService" class="fs-17px">Услуга</label><br><br>
-                    <select id="chooseService" class="fs-17px" required>
+                    <select id="chooseService" class="fs-17px" v-model="service_id" required>
                         <option value="">Профилактическое обслуживание</option>
                         <option value="">Ремонт трансмиссии</option>
                         <option value="">Обслуживание и ремонт двигателя</option>
@@ -202,7 +200,7 @@
                     </select><br><br><br>
 
                     <label for="putPhoneNumber" class="fs-17px">Номер телефона</label><br><br>
-                    <input id="putPhoneNumber" class="fs-17px" type="tel" placeholder="+7-952-986-65-00"><br><br><br>
+                    <input id="putPhoneNumber" class="fs-17px" v-model="phone_character" type="tel" placeholder="+7-952-986-65-00"><br><br><br>
 
                     <label for="putCouponNumber" class="fs-17px">Номер дружественного купона</label><br><br>
                     <input id="putCouponNumber" class="fs-17px" type="number" placeholder="9481927583910"><br><br><br>
@@ -210,7 +208,7 @@
                     <label for="putAdditionally" class="fs-17px">Дополнительно</label><br><br>
                     <input id="putAdditionally" class="fs-17px" type="text"><br><br><br>
                     <button type="submit" class="sendFormButton d-f j-c-c a-i-c fs-24px">Отправить</button>
-                </div>
+                </form>
             </div>
         </div>
     </section>
@@ -221,7 +219,10 @@
 export default {
   data() {
     return {
-      currentIndex: 0
+      currentIndex: 0,
+        form: {
+            surname_name: '',
+        }
     };
   },
   methods: {

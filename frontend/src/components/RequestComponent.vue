@@ -11,8 +11,6 @@
               <h3 class="fs-24px fw-400">Обслуживание системы зажигания</h3>
               <h3 class="fs-28px">Стоимость:</h3>
               <h3 class="fs-24px fw-400">1200 ₽ </h3>
-              <h3 class="fs-28px">Количество:</h3>
-              <h3 class="fs-24px fw-400">1 </h3>
               <h3 class="fs-28px">Статус заявки:</h3>
               <h3 class="fs-24px fw-400">В процессе</h3>
             </div>
@@ -24,13 +22,8 @@
               <h3 class="fs-24px fw-400">Обслуживание электроники</h3>
               <h3 class="fs-28px">Стоимость:</h3>
               <h3 class="fs-24px fw-400">4000 ₽ </h3>
-              <h3 class="fs-28px">Количество:</h3>
-              <h3 class="fs-24px fw-400">2 </h3>
               <h3 class="fs-28px">Статус заявки:</h3>
               <h3 class="fs-24px fw-400">Отменён</h3>
-              <h3 class="fs-28px">Заказ оформлен:</h3>
-              <h3 class="fs-24px fw-400">user1</h3>
-
             </div>
 
             <div class="request3 c-w">
@@ -40,12 +33,8 @@
               <h3 class="fs-24px fw-400">Профилактическое обслуживание</h3>
               <h3 class="fs-28px">Стоимость:</h3>
               <h3 class="fs-24px fw-400">2600 ₽ </h3>
-              <h3 class="fs-28px">Количество:</h3>
-              <h3 class="fs-24px fw-400">1 </h3>
               <h3 class="fs-28px">Статус заявки:</h3>
               <h3 class="fs-24px fw-400">Готово</h3>
-              <h3 class="fs-28px">Заказ оформлен:</h3>
-              <h3 class="fs-24px fw-400">user1</h3>
 
             </div>
 

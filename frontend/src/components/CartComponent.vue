@@ -11,8 +11,6 @@
               <h3 class="fs-24px fw-400">Обслуживание системы зажигания</h3>
               <h3 class="fs-28px">Стоимость:</h3>
               <h3 class="fs-24px fw-400">1200 ₽ </h3>
-              <h3 class="fs-28px">Количество:</h3>
-              <h3 class="fs-24px fw-400">1 </h3>
               <div class="d-f f-d-r">
                 <div class="addItemButton fs-48px d-f a-i-c j-c-c c-w">+ </div>&nbsp;
                 <div class="deleteItemButton fs-48px d-f a-i-c j-c-c c-w">-</div>
@@ -28,8 +26,6 @@
               <h3 class="fs-24px fw-400">Обслуживание электроники</h3>
               <h3 class="fs-28px">Стоимость:</h3>
               <h3 class="fs-24px fw-400">4000 ₽ </h3>
-              <h3 class="fs-28px">Количество:</h3>
-              <h3 class="fs-24px fw-400">2 </h3>
               <div class="d-f f-d-r">
                 <div class="addItemButton fs-48px d-f a-i-c j-c-c c-w">+</div>&nbsp;
                 <div class="deleteItemButton fs-48px d-f a-i-c j-c-c c-w">-</div>
@@ -47,8 +43,6 @@
               <h3 class="fs-24px fw-400">Профилактическое обслуживание</h3>
               <h3 class="fs-28px">Стоимость:</h3>
               <h3 class="fs-24px fw-400">2600 ₽ </h3>
-              <h3 class="fs-28px">Количество:</h3>
-              <h3 class="fs-24px fw-400">1 </h3>
               <div class="d-f f-d-r">
                 <div class="addItemButton fs-48px d-f a-i-c j-c-c c-w">+</div>&nbsp;
                 <div class="deleteItemButton fs-48px d-f a-i-c j-c-c c-w">-</div>
