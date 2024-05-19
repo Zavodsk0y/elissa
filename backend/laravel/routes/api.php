@@ -58,6 +58,7 @@ Route::group(['middleware' => ['auth:sanctum', EnsureVerifiedEmail::class]], fun
     Route::post('/users/credentials', ChangeEmailAndPasswordController::class);
     Route::post('/users/resend', [EmailVerificationController::class, 'resendEmail'])->withoutMiddleware(EnsureVerifiedEmail::class);
 
+
     // ABOUT ME
     Route::get('users/me', AbouteMeController::class)->withoutMiddleware(EnsureVerifiedEmail::class);
 

@@ -22,7 +22,8 @@ class UserData extends Data
         public ?Carbon $emailVerifiedAt,
         public Carbon  $createdAt,
         public Carbon  $updatedAt,
-        public ?array   $roles
+        public ?array   $roles,
+        public ?string $referralCode
     )
     {
     }
@@ -40,7 +41,8 @@ class UserData extends Data
             emailVerifiedAt: $user->email_verified_at ? new Carbon($user->email_verified_at) : null,
             createdAt: new Carbon($user->created_at),
             updatedAt: new Carbon($user->updated_at),
-            roles: $user->getRoleNames()->toArray()
+            roles: $user->getRoleNames()->toArray(),
+            referralCode: $user->referralCode->referral_code,
         );
     }
 
