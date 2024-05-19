@@ -12,6 +12,7 @@ import RequestComponent from "@/components/RequestComponent.vue";
 import AdminProfileComponent from "@/components/AdminProfileComponent.vue";
 import UsersRequestComponent from "@/components/UsersRequestComponent.vue";
 import WorkersComponent from "@/components/WorkersComponent.vue";
+import EmailVerifiedComponent from "../components/EmailVerifiedComponent.vue";
 
 
 const routes = [
@@ -79,6 +80,11 @@ const routes = [
     path: '/workers',
     name: 'workers',
     component: WorkersComponent
+  },
+  {
+    path: '/email-verified',
+    name: 'email-verified',
+    component: EmailVerifiedComponent
   }
 ]
 

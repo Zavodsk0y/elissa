@@ -107,3 +107,8 @@ footer {
 .userRequests {
     background-image: url("../img/background-form.png");
 }
+
+.emailVerified {
+    height: 43.55rem;
+    background-color: #393939;
+}

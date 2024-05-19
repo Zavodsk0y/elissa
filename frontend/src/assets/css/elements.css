@@ -519,3 +519,11 @@ body > section.goOnRecord > div > h3.d-f.j-c-c.fs-24px.fw-400.c-w {
     cursor: pointer;
     background-color: #ff4f78;
 }
+
+.emailVerifiedText {
+    margin: auto;
+    width: 53.125rem;
+    height: 35rem;
+    background-color: white;
+    border-radius: 5px;
+}

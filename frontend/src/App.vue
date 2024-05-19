@@ -13,8 +13,8 @@
           <router-link to="/news" class="fs-17px c-b">Новости</router-link>
           <router-link to="/about" class="fs-17px c-b">О нас</router-link>
           <router-link to="/services" class="fs-17px c-b">Услуги</router-link>
-          <router-link to="/registration" class="fs-17px c-b">Регистрация</router-link>
-          <router-link to="/login" class="fs-17px c-b">Вход</router-link>
+          <router-link to="/registration" class="fs-17px c-b">Профиль</router-link>
+          <router-link to="/login" class="fs-17px c-b">Выход</router-link>
         </div>
 
         <div class="d-f">
@@ -52,8 +52,8 @@
           <router-link to="/news" class="fs-17px c-b">Новости</router-link>
           <router-link to="/about" class="fs-17px c-b">О нас</router-link>
           <router-link to="/services" class="fs-17px c-b">Услуги</router-link>
-          <router-link to="/registration" class="fs-17px c-b">Регистрация</router-link>
-          <router-link to="/login" class="fs-17px c-b">Вход</router-link>
+          <router-link to="/registration" class="fs-17px c-b">Профиль</router-link>
+          <router-link to="/login" class="fs-17px c-b">Выход</router-link>
         </div>
 
         <div class="d-f f-d-c lh-2">

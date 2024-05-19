@@ -2,7 +2,7 @@
   <body>
   <section class="userRequests">
     <div class="wrapper pt-pb-2">
-      <h2 class="fs-48px t-a-c c-w">Ваши заявки</h2>
+      <h2 class="fs-48px t-a-c c-w">Все заявки</h2>
       <div class="d-f f-d-r j-c-s-b">
         <div class="request1 c-w">
           <h3 class="fs-28px">Номер заказа:</h3>
