@@ -10,11 +10,14 @@ use App\Data\Service\StoreServiceData;
 use App\Data\Service\UpdateServiceData;
 use App\Http\Controllers\Controller;
 use App\Models\Service;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
+    use AuthorizesRequests;
+
     public function index(Request $request)
     {
         $paginatedServices = Service::filter($request->all())
@@ -26,6 +29,8 @@ class ServiceController extends Controller
 
     public function store(StoreServiceData $data): JsonResponse
     {
+        $this->authorize('service add');
+
         return response()->json(StoreServiceAction::execute($data), 201);
     }
 
@@ -36,6 +41,8 @@ class ServiceController extends Controller
 
     public function update(Request $request, Service $service): ServiceShowData
     {
+        $this->authorize('service update');
+
         $request->request->add(['id' => $service->id]);
         $data = UpdateServiceData::fromRequest($request, $service);
         return UpdateServiceAction::execute($data, $service);
@@ -43,6 +50,8 @@ class ServiceController extends Controller
 
     public function destroy(Service $service): JsonResponse
     {
+        $this->authorize('service delete');
+
         return DeleteServiceAction::execute($service);
     }
 }
