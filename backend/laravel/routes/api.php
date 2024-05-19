@@ -56,7 +56,7 @@ Route::get('reset-password', [UserResetPasswordController::class, 'resetPassword
 
 Route::group(['middleware' => ['auth:sanctum', EnsureVerifiedEmail::class]], function () {
     // SET EMAIL & PASSWORD
-    Route::post('/users/credentials', ChangeEmailAndPasswordController::class);
+    Route::post('/users/credentials', ChangeEmailAndPasswordController::class)->withoutMiddleware(EnsureVerifiedEmail::class);
 
     // USER INFO
     Route::post('/users/resend', [EmailVerificationController::class, 'resendEmail'])->withoutMiddleware(EnsureVerifiedEmail::class);
