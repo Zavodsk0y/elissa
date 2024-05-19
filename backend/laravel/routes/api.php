@@ -24,6 +24,7 @@ use App\Http\Controllers\User\GenereateReferralCodeController;
 use App\Http\Controllers\User\LoginUserController;
 use App\Http\Controllers\User\RegistrationUserController;
 use App\Http\Controllers\User\ShowUsersController;
+use App\Http\Controllers\User\UpdateUserController;
 use App\Http\Controllers\User\UserResetPasswordController;
 use App\Http\Controllers\User\VkontakteAuthenticationController;
 use App\Http\Middleware\EnsureVerifiedEmail;
@@ -56,7 +57,12 @@ Route::get('reset-password', [UserResetPasswordController::class, 'resetPassword
 Route::group(['middleware' => ['auth:sanctum', EnsureVerifiedEmail::class]], function () {
     // SET EMAIL & PASSWORD
     Route::post('/users/credentials', ChangeEmailAndPasswordController::class);
+
+    // USER INFO
     Route::post('/users/resend', [EmailVerificationController::class, 'resendEmail'])->withoutMiddleware(EnsureVerifiedEmail::class);
+    Route::post('/users/email-change', [UpdateUserController::class, 'updateEmail'])->withoutMiddleware(EnsureVerifiedEmail::class);
+    Route::patch('/users/info-change', [UpdateUserController::class, 'updateInfo'])->withoutMiddleware(EnsureVerifiedEmail::class);
+    Route::patch('/users/password-change', [UpdateUserController::class, 'updatePassword'])->withoutMiddleware(EnsureVerifiedEmail::class);
 
 
     // ABOUT ME
