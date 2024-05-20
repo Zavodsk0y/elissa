@@ -13,7 +13,23 @@ import AdminProfileComponent from "@/components/AdminProfileComponent.vue";
 import UsersRequestComponent from "@/components/UsersRequestComponent.vue";
 import WorkersComponent from "@/components/WorkersComponent.vue";
 import EmailVerifiedComponent from "../components/EmailVerifiedComponent.vue";
+import store from "@/store";
 
+const ifNotAuthenticated = (to, from, next) => {
+  if (!store.getters.isAuthenticated) {
+    next();
+    return;
+  }
+  next('/');
+};
+
+const ifAuthenticated = (to, from, next) => {
+  if (store.getters.isAuthenticated) {
+    next();
+    return;
+  }
+  next('/login')
+}
 
 const routes = [
   {
@@ -29,17 +45,20 @@ const routes = [
   {
     path: '/registration',
     name: 'registration',
-    component: RegistrationComponent
+    component: RegistrationComponent,
+    beforeEnter: ifNotAuthenticated,
   },
   {
     path: '/login',
     name: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    beforeEnter: ifNotAuthenticated,
   },
   {
     path: '/reset_password',
     name: 'reset_password',
-    component: ResetPasswordComponent
+    component: ResetPasswordComponent,
+    beforeEnter: ifNotAuthenticated,
   },
   {
     path: '/services',
@@ -54,37 +73,44 @@ const routes = [
   {
     path: '/profile',
     name: 'profile',
-    component: ProfileComponent
+    component: ProfileComponent,
+    beforeEnter: ifAuthenticated,
   },
   {
     path: '/cart',
     name: 'cart',
-    component: CartComponent
+    component: CartComponent,
+    beforeEnter: ifAuthenticated,
   },
   {
     path: '/requests',
     name: 'requests',
-    component: RequestComponent
+    component: RequestComponent,
+    beforeEnter: ifAuthenticated,
   },
   {
     path: '/admin_profile',
     name: 'admin_profile',
-    component: AdminProfileComponent
+    component: AdminProfileComponent,
+    beforeEnter: ifAuthenticated,
   },
   {
     path: '/users_requests',
     name: 'users_requests',
-    component: UsersRequestComponent
+    component: UsersRequestComponent,
+    beforeEnter: ifAuthenticated,
   },
   {
     path: '/workers',
     name: 'workers',
-    component: WorkersComponent
+    component: WorkersComponent,
+    beforeEnter: ifAuthenticated,
   },
   {
     path: '/email-verified',
     name: 'email-verified',
-    component: EmailVerifiedComponent
+    component: EmailVerifiedComponent,
+    beforeEnter: ifAuthenticated,
   }
 ]
 
