@@ -45,18 +45,18 @@ export default {
     },
     methods: {
         registerUser() {
-            if (this.form.password1 !== this.form.password2) {
+            if (this.formData.password1 !== this.formData.password2) {
                 alert("Пароли не совпадают!");
                 return;
             }
 
             const user = {
-                surname: this.form.surname,
-                name: this.form.name,
-                patronymic: this.form.patronymic,
-                login: this.form.login,
-                email: this.form.email,
-                password: this.form.password1
+                surname: this.formData.surname,
+                name: this.formData.name,
+                patronymic: this.formData.patronymic,
+                login: this.formData.login,
+                email: this.formData.email,
+                password: this.formData.password1
             };
 
             localStorage.setItem('user', JSON.stringify(user));

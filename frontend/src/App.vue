@@ -16,7 +16,7 @@
           <router-link to="/registration" v-if="!this.$store.getters.isAuthenticated" class="fs-17px c-b">Регистрация</router-link>
           <router-link to="/login" v-if="!this.$store.getters.isAuthenticated" class="fs-17px c-b">Вход</router-link>
           <router-link to="/profile" v-if="this.$store.getters.isAuthenticated" class="fs-17px c-b">Профиль</router-link>
-          <router-link to="/logout" v-if="this.$store.getters.isAuthenticated" class="fs-17px c-b">Выход</router-link>
+          <router-link to="/" @click.native="logout" v-if="this.$store.getters.isAuthenticated" class="fs-17px c-b">Выход</router-link>
         </div>
 
         <div class="d-f">
@@ -57,7 +57,7 @@
           <router-link to="/registration" v-if="!this.$store.getters.isAuthenticated" class="fs-17px c-b">Регистрация</router-link>
           <router-link to="/login" v-if="!this.$store.getters.isAuthenticated" class="fs-17px c-b">Вход</router-link>
           <router-link to="/profile" v-if="this.$store.getters.isAuthenticated" class="fs-17px c-b">Профиль</router-link>
-          <router-link to="/logout" v-if="this.$store.getters.isAuthenticated" class="fs-17px c-b">Выход</router-link>
+          <router-link to="/" @click.native="logout" v-if="this.$store.getters.isAuthenticated" class="fs-17px c-b">Выход</router-link>
         </div>
 
         <div class="d-f f-d-c lh-2">
@@ -82,5 +82,14 @@
   </footer>
 
 </template>
-<script setup>
+<script>
+export default {
+  methods: {
+    logout() {
+      this.$store.dispatch('LOGOUT_REQUEST').then(() => {
+        this.$router.push('/');
+      });
+    }
+  }
+};
 </script>

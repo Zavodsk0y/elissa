@@ -14,6 +14,9 @@ export default createStore({
     AUTH_ERROR: (state) => {
       state.token = '';
     },
+    LOGOUT: (state) => {
+      state.token = '';
+    },
   },
   actions: {
     AUTH_REQUEST: ({ commit }, user) => {
@@ -29,6 +32,13 @@ export default createStore({
               localStorage.removeItem('appToken');
               reject();
             });
+      });
+    },
+    LOGOUT_REQUEST: ({ commit }) => {
+      return new Promise((resolve) => {
+        commit('LOGOUT');
+        localStorage.removeItem('appToken');
+        resolve();
       });
     },
   },
