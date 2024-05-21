@@ -6,9 +6,6 @@
         <h2 class="fs-32px t-a-c">Профиль</h2>
         <h3 class="fs-24px fw-400">Ваши данные</h3>
 
-        <p v-if="successMessage" class="success-message fs-28px">{{ successMessage }}</p>
-        <p v-if="errorMessage" class="error-message fs-28px">{{ errorMessage }}</p>
-
         <div class="d-f f-d-r">
           <div class="profilePart1">
             <label for="putSurname" class="fs-17px fw-700">Фамилия</label><br><br>
@@ -35,6 +32,9 @@
             <input v-model="password2" id="putPassword2" class="fs-17px" type="password"><br><br><br><br>
 
             <button type="submit" class="updateProfileButton d-f a-i-c j-c-c fs-24px">Сохранить</button>
+
+            <p v-if="successMessage" class="d-f j-c-c success-message fs-28px">{{ successMessage }}</p>
+            <p v-if="errorMessage" class="d-f j-c-c error-message fs-28px">{{ errorMessage }}</p>
           </div>
         </div><br><br><br>
         <router-link class="fs-24px" to="/cart">Корзина</router-link><br><br><br><br>

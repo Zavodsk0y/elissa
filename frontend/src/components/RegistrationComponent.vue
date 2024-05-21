@@ -21,6 +21,8 @@
                     <input v-model="formData.password2" id="password2" class="fs-17px" type="password" required><br><br><br><br>
                     <div class="d-f f-d-r">
                         <button type="submit" class="sendRegistrationForm d-f j-c-c fs-24px">Зарегистрироваться</button>
+                        <p v-if="successMessage" class="d-f j-c-c ml-2 success-message fs-28px">{{ successMessage }}</p>
+                        <p v-if="errorMessage" class="d-f j-c-c ml-2 error-message fs-28px">{{ errorMessage }}</p>
                     </div>
                 </form>
             </div>
@@ -39,14 +41,16 @@ export default {
                 login: '',
                 email: '',
                 password1: '',
-                password2: ''
-            }
+                password2: '',
+            },
+            successMessage: '',
+            errorMessage: '',
         };
     },
     methods: {
         registerUser() {
             if (this.formData.password1 !== this.formData.password2) {
-                alert("Пароли не совпадают!");
+                this.errorMessage = 'Пароли не совпадают';
                 return;
             }
 
@@ -60,7 +64,7 @@ export default {
             };
 
             localStorage.setItem('user', JSON.stringify(user));
-            alert("Регистрация прошла успешно!");
+            this.successMessage = 'Регистрация прошла успешно!';
 
         }
     }

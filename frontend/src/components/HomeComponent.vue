@@ -179,37 +179,38 @@
 
 
     <section class="sendForm mt_3">
-        <div class="wrapper mt-1">
-            <h2 class="fs-32px c-w d-f j-c-c pt-2">Хотите оставить заявку? Эта форма - для Вас!</h2>
-            <div class="mt_3">
-                <form class="sendRequestForm" method="POST" @submit.prevent="sendRequest">
+        <div class="wrapper t-a-c mt-1">
+            <h2 v-if="this.$store.getters.isAuthenticated" class="fs-32px c-w d-f j-c-c pt-2">Хотите оставить заявку? Эта форма - для Вас!</h2>
+            <div v-if="this.$store.getters.isAuthenticated" class="mt_3">
+                <form @submit.prevent="sendFormRequest" class="sendRequestForm" method="POST"  >
                     <h3 class="fs-24px">Форма для записи</h3>
-                    <label for="surname_name" class="fs-17px">Имя, фамилия</label><br><br>
-                    <input id="surname_name" class="fs-17px" v-model="surname_name" type="text" placeholder="Иванов Иван" required><br><br><br>
+                    <label for="FIO" class="fs-17px">Фамилия, имя, отчество</label><br><br>
+                    <input v-model="formData.FIO" id="FIO" class="fs-17px" type="text" placeholder="Иванов Иван Иванович" required><br><br><br>
 
                     <label for="chooseService" class="fs-17px">Услуга</label><br><br>
-                    <select id="chooseService" class="fs-17px" v-model="service_id" required>
-                        <option value="">Профилактическое обслуживание</option>
-                        <option value="">Ремонт трансмиссии</option>
-                        <option value="">Обслуживание и ремонт двигателя</option>
-                        <option value="">Обслуживание и ремонт тормозов</option>
-                        <option value="">Обслуживание электронники</option>
-                        <option value="">Обслуживание системы зажигания</option>
-                        <option value="">Услуги детейлинга</option>
-                        <option value="">Обслуживание топливной системы</option>
+                    <select v-model="formData.chooseService" id="chooseService" class="fs-17px" required>
+                        <option selected value="Профилактическое обслуживание">Профилактическое обслуживание</option>
+                        <option value="Ремонт трансмиссии">Ремонт трансмиссии</option>
+                        <option value="Обслуживание и ремонт двигателя">Обслуживание и ремонт двигателя</option>
+                        <option value="Обслуживание и ремонт тормозов">Обслуживание и ремонт тормозов</option>
+                        <option value="Обслуживание электронники">Обслуживание электронники</option>
+                        <option value="Обслуживание системы зажигания">Обслуживание системы зажигания</option>
+                        <option value="Услуги детейлинга">Услуги детейлинга</option>
+                        <option value="Обслуживание топливной системы">Обслуживание топливной системы</option>
                     </select><br><br><br>
 
                     <label for="putPhoneNumber" class="fs-17px">Номер телефона</label><br><br>
-                    <input id="putPhoneNumber" class="fs-17px" v-model="phone_character" type="tel" placeholder="+7-952-986-65-00"><br><br><br>
+                    <input v-model="formData.phoneNumber" id="putPhoneNumber" class="fs-17px" type="tel" placeholder="+7-952-986-65-00"><br><br><br>
 
                     <label for="putCouponNumber" class="fs-17px">Номер дружественного купона</label><br><br>
-                    <input id="putCouponNumber" class="fs-17px" type="number" placeholder="9481927583910"><br><br><br>
+                    <input v-model="formData.couponNumber" id="putCouponNumber" class="fs-17px" type="number" placeholder="9481927583910"><br><br><br>
 
                     <label for="putAdditionally" class="fs-17px">Дополнительно</label><br><br>
-                    <input id="putAdditionally" class="fs-17px" type="text"><br><br><br>
+                    <input v-model="formData.additionally" id="putAdditionally" class="fs-17px" type="text"><br><br><br>
                     <button type="submit" class="sendFormButton d-f j-c-c a-i-c fs-24px">Отправить</button>
                 </form>
             </div>
+              <h2 v-if="!this.$store.getters.isAuthenticated" class="fs-48px c-w d-f j-c-c t-a-c pt-25">Для того, чтобы оставить заявку, <br> вам необходимо авторизоваться</h2>
         </div>
     </section>
 
@@ -219,18 +220,43 @@
 export default {
   data() {
     return {
+        formData: {
+            FIO: '',
+            chooseService: '',
+            phoneNumber: '',
+            couponNumber: '',
+            additionally: '',
+        },
+        currentUser: JSON.parse(localStorage.getItem('currentUser')),
       currentIndex: 0,
-        form: {
-            surname_name: '',
-        }
     };
   },
-  methods: {
+    mounted() {
+      this.formData.chooseService = 'Профилактическое обслуживание'
+    },
+    methods: {
     nextReviewPage() {
       this.currentIndex = (this.currentIndex + 1) % 3;
     },
     previousReviewPage() {
       this.currentIndex = (this.currentIndex - 1 + 3) % 3;
+    },
+    sendFormRequest() {
+        const existingRequests = JSON.parse(localStorage.getItem('requests')) || [];
+        const userRequest = {
+            userName: this.currentUser.login,
+            ...this.formData
+        }
+        existingRequests.push(userRequest);
+        localStorage.setItem('requests', JSON.stringify(existingRequests));
+
+        this.formData = {
+            FIO: '',
+            chooseService: '',
+            phoneNumber: '',
+            couponNumber: '',
+            additionally: ''
+        }
     }
   }
 };

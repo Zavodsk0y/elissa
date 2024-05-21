@@ -91,6 +91,10 @@
     padding-top: 2rem;
 }
 
+.pt-25 {
+    padding-top: 25rem;
+}
+
 .pt-pb-2 {
     padding: 2rem 0 2rem 0;
 }
@@ -500,7 +504,7 @@ body > section.goOnRecord > div > h3.d-f.j-c-c.fs-24px.fw-400.c-w {
     background: black;
 }
 
-.worker1, .worker2, .worker3 {
+.worker {
     border: 2px solid black;
     padding: 20px;
 }
