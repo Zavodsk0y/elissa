@@ -179,10 +179,10 @@
 
 
     <section class="sendForm mt_3">
-        <div class="wrapper t-a-c mt-1">
+        <div class="wrapper mt-1">
             <h2 v-if="this.$store.getters.isAuthenticated" class="fs-32px c-w d-f j-c-c pt-2">Хотите оставить заявку? Эта форма - для Вас!</h2>
             <div v-if="this.$store.getters.isAuthenticated" class="mt_3">
-                <form @submit.prevent="sendFormRequest" class="sendRequestForm" method="POST"  >
+                <form @submit.prevent="sendFormRequest" class="sendRequestForm" method="POST">
                     <h3 class="fs-24px">Форма для записи</h3>
                     <label for="FIO" class="fs-17px">Фамилия, имя, отчество</label><br><br>
                     <input v-model="formData.FIO" id="FIO" class="fs-17px" type="text" placeholder="Иванов Иван Иванович" required><br><br><br>
@@ -200,7 +200,7 @@
                     </select><br><br><br>
 
                     <label for="putPhoneNumber" class="fs-17px">Номер телефона</label><br><br>
-                    <input v-model="formData.phoneNumber" id="putPhoneNumber" class="fs-17px" type="tel" placeholder="+7-952-986-65-00"><br><br><br>
+                    <input v-model="formData.phoneNumber" id="putPhoneNumber" class="fs-17px" type="tel" placeholder="+7-952-986-65-00" required><br><br><br>
 
                     <label for="putCouponNumber" class="fs-17px">Номер дружественного купона</label><br><br>
                     <input v-model="formData.couponNumber" id="putCouponNumber" class="fs-17px" type="number" placeholder="9481927583910"><br><br><br>
@@ -227,7 +227,7 @@ export default {
             couponNumber: '',
             additionally: '',
         },
-        currentUser: JSON.parse(localStorage.getItem('currentUser')),
+      currentUser: JSON.parse(localStorage.getItem('currentUser')),
       currentIndex: 0,
     };
   },
@@ -243,9 +243,14 @@ export default {
     },
     sendFormRequest() {
         const existingRequests = JSON.parse(localStorage.getItem('requests')) || [];
+        const requestId = existingRequests.length + 1
+        const randomCost = Math.floor(Math.random() * 9 + 2) * 500;
         const userRequest = {
+            requestId: requestId.toString().padStart(7, '0'),
             userName: this.currentUser.login,
-            ...this.formData
+            ...this.formData,
+            cost: randomCost,
+            status: 'Создана'
         }
         existingRequests.push(userRequest);
         localStorage.setItem('requests', JSON.stringify(existingRequests));

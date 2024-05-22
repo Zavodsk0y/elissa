@@ -3,68 +3,54 @@
   <section class="userRequests">
     <div class="wrapper pt-pb-2">
       <h2 class="fs-48px t-a-c c-w">Все заявки</h2>
-      <div class="d-f f-d-r j-c-s-b">
-        <div class="request1 c-w">
-          <h3 class="fs-28px">Номер заказа:</h3>
-          <h3 class="fs-24px fw-400">20581234 </h3>
-          <h3 class="fs-28px">Услуга:</h3>
-          <h3 class="fs-24px fw-400">Обслуживание системы зажигания</h3>
-          <h3 class="fs-28px">Стоимость:</h3>
-          <h3 class="fs-24px fw-400">1200 ₽ </h3>
-          <h3 class="fs-28px">Заказ оформлен пользователем:</h3>
-          <h3 class="fs-24px fw-400">user1</h3>
-          <h3 class="fs-28px">Статус заявки:</h3>
-          <select class="fs-24px c-w">
-            <option>Создан</option>
-            <option>В процессе</option>
-            <option>Выполнен</option>
-          </select><br><br>
-          <button type="submit" class="updateProfileButton c-w d-f a-i-c j-c-c fs-24px">Сохранить</button>
-        </div>
-
-        <div class="request2 c-w">
-          <h3 class="fs-28px">Номер заказа:</h3>
-          <h3 class="fs-24px fw-400">123712059 </h3>
-          <h3 class="fs-28px">Услуга:</h3>
-          <h3 class="fs-24px fw-400">Обслуживание электроники</h3>
-          <h3 class="fs-28px">Стоимость:</h3>
-          <h3 class="fs-24px fw-400">4000 ₽ </h3>
-          <h3 class="fs-28px">Заказ оформлен пользователем:</h3>
-          <h3 class="fs-24px fw-400">user1</h3>
-          <h3 class="fs-28px">Статус заявки:</h3>
-          <select class="fs-24px c-w">
-            <option>Создан</option>
-            <option>В процессе</option>
-            <option>Выполнен</option>
-          </select><br><br>
-          <button type="submit" class="updateProfileButton c-w d-f a-i-c j-c-c fs-24px">Сохранить</button>
-
-        </div>
-
-        <div class="request3 c-w">
-          <h3 class="fs-28px">Номер заказа:</h3>
-          <h3 class="fs-24px fw-400">451113241 </h3>
-          <h3 class="fs-28px">Услуга:</h3>
-          <h3 class="fs-24px fw-400">Профилактическое обслуживание</h3>
-          <h3 class="fs-28px">Стоимость:</h3>
-          <h3 class="fs-24px fw-400">2600 ₽ </h3>
-          <h3 class="fs-28px">Заказ оформлен пользователем:</h3>
-          <h3 class="fs-24px fw-400">user1</h3>
-          <h3 class="fs-28px">Статус заявки:</h3>
-          <select class="fs-24px c-w">
-            <option>Создан</option>
-            <option>В процессе</option>
-            <option>Выполнен</option>
-          </select><br><br>
-          <button type="submit" class="updateProfileButton c-w d-f a-i-c j-c-c fs-24px">Сохранить</button>
-
-        </div>
-
-      </div>
-
+            <div class="grid_userRequest d-f f-d-r j-c-s-b c-w">
+                <div class="request"  v-for="request in allRequests" :key="request.requestId">
+                  <h3 class="fs-28px">Номер заказа:</h3>
+                  <h3 class="fs-24px fw-400">{{ request.requestId }} </h3>
+                  <h3 class="fs-28px">Услуга</h3>
+                  <h3 class="fs-24px fw-400">{{ request.chooseService }} </h3>
+                  <h3 class="fs-28px">Стоимость:</h3>
+                  <h3 class="fs-24px fw-400">{{ request.cost }} ₽</h3>
+                  <h3 class="fs-28px">Оформил заказ:</h3>
+                  <h3 class="fs-24px fw-400">{{ request.userName }} </h3>
+                  <h3 class="fs-28px">Номер телефона:</h3>
+                  <h3 class="fs-24px fw-400">{{ request.phoneNumber }} </h3>
+                  <h3 class="fs-28px">Статус:</h3>
+                  <select class="fs-24px c-w" v-model="request.status">
+                    <option value="Создана">Создана</option>
+                    <option value="В работе">В работе</option>
+                    <option value="Завершена">Завершена</option>
+                  </select><br><br>
+                  <button type="submit" @click="updateStatus(request)" class="updateProfileButton c-w d-f a-i-c j-c-c fs-24px">Сохранить</button>
+                </div>
+            </div>
     </div>
+
   </section>
   </body>
 </template>
-<script setup>
+<script>
+export default {
+    data() {
+        return {
+            allRequests: []
+        };
+    },
+    mounted() {
+        this.loadRequests();
+    },
+    methods: {
+        loadRequests() {
+            this.allRequests = JSON.parse(localStorage.getItem('requests'));
+        },
+        updateStatus(updatedRequest) {
+            const requests = JSON.parse(localStorage.getItem('requests'));
+            const requestIndex = requests.findIndex(request => request.requestId === updatedRequest.requestId);
+            if (requestIndex !== -1) {
+                requests[requestIndex].status = updatedRequest.status;
+                localStorage.setItem('requests', JSON.stringify(requests));
+            }
+        }
+    }
+}
 </script>

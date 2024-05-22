@@ -10,3 +10,9 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 3rem;
 }
+
+.grid_userRequest {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3rem;
+}

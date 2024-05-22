@@ -478,11 +478,11 @@ body > section.goOnRecord > div > h3.d-f.j-c-c.fs-24px.fw-400.c-w {
     border: none;
 }
 
-.order1, .order2, .order3, .request1, .request2, .request3 {
+.order1, .order2, .order3, .request{
     width: 24.375rem;
 }
 
-.request1, .request2, .request3 {
+.request {
     border: 2px solid white;
     padding: 20px;
 }
@@ -491,7 +491,7 @@ body > section.goOnRecord > div > h3.d-f.j-c-c.fs-24px.fw-400.c-w {
     cursor: pointer;
 }
 
-.request1 > select, .request2 > select, .request3 > select {
+.request > select {
     width: 24.5rem;
     border: none;
     border-bottom: 1px solid white;
@@ -500,7 +500,7 @@ body > section.goOnRecord > div > h3.d-f.j-c-c.fs-24px.fw-400.c-w {
     outline: none;
 }
 
-.request1 > select option, .request2 > select option, .request3 > select option {
+.request > select option {
     background: black;
 }
 
