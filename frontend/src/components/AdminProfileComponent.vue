@@ -36,8 +36,6 @@
                   <p v-if="errorMessage" class="d-f j-c-c error-message fs-28px">{{ errorMessage }}</p>
               </div>
           </div><br><br><br>
-        <router-link class="fs-24px" to="/users_requests">Заявки пользователей</router-link><br><br><br><br>
-        <router-link class="fs-24px" to="/workers">Все сотрудники</router-link>
       </form>
     </div>
   </section>

@@ -13,9 +13,9 @@
           <router-link to="/news" class="fs-17px c-b">Новости</router-link>
           <router-link to="/about" class="fs-17px c-b">О нас</router-link>
           <router-link to="/services" class="fs-17px c-b">Услуги</router-link>
-          <router-link to="/registration" v-if="!this.$store.getters.isAuthenticated" class="fs-17px c-b">Регистрация</router-link>
+          <router-link to="/signup" v-if="!this.$store.getters.isAuthenticated" class="fs-17px c-b">Регистрация</router-link>
           <router-link to="/login" v-if="!this.$store.getters.isAuthenticated" class="fs-17px c-b">Вход</router-link>
-          <router-link to="/profile" v-if="this.$store.getters.isAuthenticated" class="fs-17px c-b">Профиль</router-link>
+          <router-link to="/users/me" v-if="this.$store.getters.isAuthenticated" class="fs-17px c-b">Профиль</router-link>
           <router-link to="/" @click.native="logout" v-if="this.$store.getters.isAuthenticated" class="fs-17px c-b">Выход</router-link>
         </div>
 
@@ -54,9 +54,9 @@
           <router-link to="/news" class="fs-17px c-b">Новости</router-link>
           <router-link to="/about" class="fs-17px c-b">О нас</router-link>
           <router-link to="/services" class="fs-17px c-b">Услуги</router-link>
-          <router-link to="/registration" v-if="!this.$store.getters.isAuthenticated" class="fs-17px c-b">Регистрация</router-link>
+          <router-link to="/signup" v-if="!this.$store.getters.isAuthenticated" class="fs-17px c-b">Регистрация</router-link>
           <router-link to="/login" v-if="!this.$store.getters.isAuthenticated" class="fs-17px c-b">Вход</router-link>
-          <router-link to="/profile" v-if="this.$store.getters.isAuthenticated" class="fs-17px c-b">Профиль</router-link>
+          <router-link to="/users/me" v-if="this.$store.getters.isAuthenticated" class="fs-17px c-b">Профиль</router-link>
           <router-link to="/" @click.native="logout" v-if="this.$store.getters.isAuthenticated" class="fs-17px c-b">Выход</router-link>
         </div>
 
@@ -75,20 +75,18 @@
             <img src="../src/assets/img/email-icon.png" class="icon-email" alt="Нет иконки">
           </div>
         </div>
-
-
       </div>
     </div>
   </footer>
-
 </template>
+
 <script>
+
 export default {
   methods: {
     logout() {
-      this.$store.dispatch('LOGOUT_REQUEST').then(() => {
-        this.$router.push('/');
-      });
+      localStorage.removeItem('token');
+      window.location.reload();
     }
   }
 };

@@ -1,47 +1,51 @@
-import { createStore } from 'vuex'
+import {createStore} from 'vuex'
+import axios from 'axios'
 
 export default createStore({
-  state: {
-    token: localStorage.getItem('appToken') || '',
-  },
-  getters: {
-    isAuthenticated: (state) => !!state.token
-  },
-  mutations: {
-    AUTH_SUCCESS: (state, token) => {
-      state.token = token;
+    state: {
+        token: localStorage.getItem('token') || '',
+        userRoles: [],
     },
-    AUTH_ERROR: (state) => {
-      state.token = '';
+    getters: {
+        isAuthenticated: (state) => !!state.token,
+        isAdmin: (state) => state.userRoles.includes('admin')
     },
-    LOGOUT: (state) => {
-      state.token = '';
+    mutations: {
+        AUTH_SUCCESS: (state, token) => {
+            state.token = token;
+        },
+        AUTH_ERROR: (state) => {
+            state.token = '';
+        },
+        LOGOUT: (state) => {
+            state.token = '';
+        },
+        SET_USER_ROLES: (state, roles) => {
+            state.userRoles = roles;
+        }
     },
-  },
-  actions: {
-    AUTH_REQUEST: ({ commit }, user) => {
-      return new Promise((resolve, reject) => {
-        loginRequest(user)
-            .then((token) => {
-              commit('AUTH_SUCCESS', token);
-              localStorage.setItem('appToken', token);
-              resolve();
-            })
-            .catch(() => {
-              commit('AUTH_ERROR');
-              localStorage.removeItem('appToken');
-              reject();
-            });
-      });
+    actions: {
+        login({commit}, token) {
+            commit('setToken', token);
+        },
+        logout({commit}) {
+            commit('clearToken');
+        },
+        fetchUserProfile({ commit }) {
+            const token = localStorage.getItem('token');
+            if (token) {
+                axios.get('http://localhost/api/users/me', {
+                    headers: { Authorization: `Bearer ${token}` }
+                })
+                    .then(response => {
+                        const roles = response.data.roles;
+                        commit('SET_USER_ROLES', roles);
+                    })
+                    .catch(error => {
+                        console.error('Error fetching user profile:', error.response ? error.response.data : error);
+                    });
+            }
+        }
     },
-    LOGOUT_REQUEST: ({ commit }) => {
-      return new Promise((resolve) => {
-        commit('LOGOUT');
-        localStorage.removeItem('appToken');
-        resolve();
-      });
-    },
-  },
-  modules: {
-  }
-})
+        modules: {}
+    })

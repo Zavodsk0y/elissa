@@ -43,8 +43,8 @@ const routes = [
     component: AboutComponent
   },
   {
-    path: '/registration',
-    name: 'registration',
+    path: '/signup',
+    name: 'signup',
     component: RegistrationComponent,
     beforeEnter: ifNotAuthenticated,
   },
@@ -71,7 +71,7 @@ const routes = [
     component: NewsComponent
   },
   {
-    path: '/profile',
+    path: '/users/me',
     name: 'profile',
     component: ProfileComponent,
     beforeEnter: ifAuthenticated,

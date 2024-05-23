@@ -16,7 +16,7 @@
                     <label for="email" class="fs-17px">Адрес электронной почты</label><br><br>
                     <input v-model="formData.email" id="email" class="fs-17px" type="email" placeholder="user@gmail.com" required><br><br><br>
                     <label for="password1" class="fs-17px">Пароль</label><br><br>
-                    <input v-model="formData.password1" id="password1" class="fs-17px" type="password" required><br><br><br>
+                    <input v-model="formData.password" id="password1" class="fs-17px" type="password" required><br><br><br>
                     <label for="password2" class="fs-17px">Повторите пароль</label><br><br>
                     <input v-model="formData.password2" id="password2" class="fs-17px" type="password" required><br><br><br><br>
                     <div class="d-f f-d-r">
@@ -31,6 +31,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
     data() {
         return {
@@ -40,7 +42,7 @@ export default {
                 patronymic: '',
                 login: '',
                 email: '',
-                password1: '',
+                password: '',
                 password2: '',
             },
             successMessage: '',
@@ -49,24 +51,24 @@ export default {
     },
     methods: {
         registerUser() {
-            if (this.formData.password1 !== this.formData.password2) {
-                this.errorMessage = 'Пароли не совпадают';
-                return;
-            }
+            axios
+                .post('http://localhost/api/signup', this.formData)
+                .then((response) => console.log(response))
+                .catch((error) => console.log(error))
 
             const user = {
-                surname: this.formData.surname,
-                name: this.formData.name,
-                patronymic: this.formData.patronymic,
-                login: this.formData.login,
-                email: this.formData.email,
-                password: this.formData.password1
+              name: this.formData.name,
+              patronymic: this.formData.patronymic,
+              login: this.formData.login,
+              email: this.formData.email,
+              password: this.formData.password
             };
 
             localStorage.setItem('user', JSON.stringify(user));
             this.successMessage = 'Регистрация прошла успешно!';
 
+            }
         }
-    }
+
 };
 </script>
