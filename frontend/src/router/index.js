@@ -11,7 +11,7 @@ import CartComponent from "@/components/CartComponent.vue";
 import RequestComponent from "@/components/RequestComponent.vue";
 import AdminProfileComponent from "@/components/AdminProfileComponent.vue";
 import UsersRequestComponent from "@/components/UsersRequestComponent.vue";
-import WorkersComponent from "@/components/WorkersComponent.vue";
+import UsersComponent from "@/components/UsersComponent.vue";
 import EmailVerifiedComponent from "../components/EmailVerifiedComponent.vue";
 import store from "@/store";
 
@@ -101,9 +101,9 @@ const routes = [
     beforeEnter: ifAuthenticated,
   },
   {
-    path: '/workers',
-    name: 'workers',
-    component: WorkersComponent,
+    path: '/users',
+    name: 'users',
+    component: UsersComponent,
     beforeEnter: ifAuthenticated,
   },
   {

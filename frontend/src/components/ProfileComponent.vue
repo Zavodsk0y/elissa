@@ -28,10 +28,16 @@
             <p v-if="errorMessage" class="d-f j-c-c error-message fs-28px">{{ errorMessage }}</p>
           </div>
         </div><br><br><br>
-        <router-link class="fs-24px" to="/cart" v-if="!isAdmin">Корзина</router-link><br><br><br><br>
-        <router-link class="fs-24px" to="/requests" v-if="!isAdmin">Ваши заявки</router-link><br><br><br><br>
-        <router-link class="fs-24px" to="/users_requests" v-if="isAdmin">Заявки пользователей</router-link><br><br><br><br>
-        <router-link class="fs-24px" to="/workers" v-if="isAdmin">Все сотрудники</router-link>
+        <div v-if="isAdmin">
+          <router-link class="fs-24px" to="/users_requests">Заявки пользователей</router-link><br><br><br><br>
+          <router-link class="fs-24px" to="/users">Все пользователи</router-link>
+        </div>
+        <div v-else>
+          <router-link class="fs-24px" to="/cart">Корзина</router-link><br><br><br><br>
+          <router-link class="fs-24px" to="/requests">Ваши заявки</router-link><br><br><br><br>
+        </div>
+
+
       </form>
     </div>
   </section>
