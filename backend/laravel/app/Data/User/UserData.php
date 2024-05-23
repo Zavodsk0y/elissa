@@ -42,7 +42,7 @@ class UserData extends Data
             createdAt: new Carbon($user->created_at),
             updatedAt: new Carbon($user->updated_at),
             roles: $user->getRoleNames()->toArray(),
-            referralCode: $user->referralCode->referral_code,
+            referralCode: $user->referralCode->referral_code ?? null,
         );
     }
 
