@@ -8,12 +8,13 @@ import ServiceComponent from "@/components/ServiceComponent.vue";
 import NewsComponent from "@/components/NewsComponent.vue";
 import ProfileComponent from "@/components/ProfileComponent.vue";
 import CartComponent from "@/components/CartComponent.vue";
-import RequestComponent from "@/components/RequestComponent.vue";
+import RequestsComponent from "@/components/RequestsComponent.vue";
 import AdminProfileComponent from "@/components/AdminProfileComponent.vue";
-import UsersRequestComponent from "@/components/UsersRequestComponent.vue";
-import WorkersComponent from "@/components/WorkersComponent.vue";
+import UsersComponent from "@/components/UsersComponent.vue";
 import EmailVerifiedComponent from "../components/EmailVerifiedComponent.vue";
 import store from "@/store";
+import UserRequestComponent from "@/components/UserRequestComponent.vue";
+import PartsComponent from "@/components/PartsComponent.vue";
 
 const ifNotAuthenticated = (to, from, next) => {
   if (!store.getters.isAuthenticated) {
@@ -83,9 +84,14 @@ const routes = [
     beforeEnter: ifAuthenticated,
   },
   {
+    path: '/parts',
+    name: 'parts',
+    component: PartsComponent,
+  },
+  {
     path: '/requests',
     name: 'requests',
-    component: RequestComponent,
+    component: RequestsComponent,
     beforeEnter: ifAuthenticated,
   },
   {
@@ -95,15 +101,15 @@ const routes = [
     beforeEnter: ifAuthenticated,
   },
   {
-    path: '/users_requests',
-    name: 'users_requests',
-    component: UsersRequestComponent,
+    path: '/user_requests',
+    name: 'user_requests',
+    component: UserRequestComponent,
     beforeEnter: ifAuthenticated,
   },
   {
-    path: '/workers',
-    name: 'workers',
-    component: WorkersComponent,
+    path: '/users',
+    name: 'users',
+    component: UsersComponent,
     beforeEnter: ifAuthenticated,
   },
   {

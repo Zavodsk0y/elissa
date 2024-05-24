@@ -13,6 +13,7 @@
           <router-link to="/news" class="fs-17px c-b">Новости</router-link>
           <router-link to="/about" class="fs-17px c-b">О нас</router-link>
           <router-link to="/services" class="fs-17px c-b">Услуги</router-link>
+          <router-link to="/parts" class="fs-17px c-b">Товары</router-link>
           <router-link to="/signup" v-if="!this.$store.getters.isAuthenticated" class="fs-17px c-b">Регистрация</router-link>
           <router-link to="/login" v-if="!this.$store.getters.isAuthenticated" class="fs-17px c-b">Вход</router-link>
           <router-link to="/users/me" v-if="this.$store.getters.isAuthenticated" class="fs-17px c-b">Профиль</router-link>
@@ -54,6 +55,7 @@
           <router-link to="/news" class="fs-17px c-b">Новости</router-link>
           <router-link to="/about" class="fs-17px c-b">О нас</router-link>
           <router-link to="/services" class="fs-17px c-b">Услуги</router-link>
+          <router-link to="/parts" class="fs-17px c-b">Товары</router-link>
           <router-link to="/signup" v-if="!this.$store.getters.isAuthenticated" class="fs-17px c-b">Регистрация</router-link>
           <router-link to="/login" v-if="!this.$store.getters.isAuthenticated" class="fs-17px c-b">Вход</router-link>
           <router-link to="/users/me" v-if="this.$store.getters.isAuthenticated" class="fs-17px c-b">Профиль</router-link>

@@ -65,7 +65,13 @@ footer {
 /* секция услуг */
 
 .servicesInfo {
+    height: 110rem;
     background-image: url("../img/service_background_image.png");
+}
+
+.partsInfo {
+    height: 130rem;
+    background-image: url("../img/service_background_image.png") ;
 }
 
 .goOnRecord {

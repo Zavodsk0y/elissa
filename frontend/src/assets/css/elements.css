@@ -352,10 +352,14 @@ a {
 }
 
 /* Услуги */
-.serviceInfo {
+.serviceInfo, .partInfo {
     height: 26.875rem;
     width: 23.125rem;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+.partInfo {
+    height: 33rem;
 }
 
 .openRecordButton {
@@ -509,7 +513,7 @@ body > section.goOnRecord > div > h3.d-f.j-c-c.fs-24px.fw-400.c-w {
     padding: 20px;
 }
 
-.fireWorkerButton {
+.removeWorkerButton {
     margin: auto;
     background: none;
     width: 13rem;
@@ -519,9 +523,24 @@ body > section.goOnRecord > div > h3.d-f.j-c-c.fs-24px.fw-400.c-w {
     transition: .5s;
 }
 
-.fireWorkerButton:hover {
+.removeWorkerButton:hover {
     cursor: pointer;
     background-color: #ff4f78;
+}
+
+.assignWorkerButton {
+    margin: auto;
+    background: none;
+    width: 13rem;
+    height: 3.575rem;
+    border: 3px solid #028302;
+    color: black;
+    transition: .5s;
+}
+
+.assignWorkerButton:hover {
+    cursor: pointer;
+    background-color: #05c705;
 }
 
 .emailVerifiedText {
@@ -530,4 +549,55 @@ body > section.goOnRecord > div > h3.d-f.j-c-c.fs-24px.fw-400.c-w {
     height: 35rem;
     background-color: white;
     border-radius: 5px;
+}
+
+.worker {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.worker .role-list {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.worker .buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.worker button {
+    flex: 1;
+    margin: 0 5px;
+}
+
+.worker button:first-child {
+    margin-left: 0;
+}
+
+.worker button:last-child {
+    margin-right: 0;
+}
+
+.serviceImage {
+    height: 15rem;
+    width: 23.1rem;
+}
+
+.addToCartButton {
+    margin: auto;
+    background: none;
+    width: 15rem;
+    height: 2.875rem;
+    border: 2px solid #13ff1f;
+    transition: .5s;
+}
+
+.addToCartButton:hover {
+    cursor: pointer;
+    transition: .5s;
+    background-color: #49fc51;
 }

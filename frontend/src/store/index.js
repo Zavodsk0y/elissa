@@ -5,10 +5,12 @@ export default createStore({
     state: {
         token: localStorage.getItem('token') || '',
         userRoles: [],
+        cart: [],
     },
     getters: {
         isAuthenticated: (state) => !!state.token,
-        isAdmin: (state) => state.userRoles.includes('admin')
+        isAdmin: (state) => state.userRoles.includes('admin'),
+        cartItems: (state) => state.cart
     },
     mutations: {
         AUTH_SUCCESS: (state, token) => {
@@ -22,6 +24,9 @@ export default createStore({
         },
         SET_USER_ROLES: (state, roles) => {
             state.userRoles = roles;
+        },
+        ADD_TO_CART(state, part) {
+            state.cart.push(part);
         }
     },
     actions: {
@@ -30,6 +35,9 @@ export default createStore({
         },
         logout({commit}) {
             commit('clearToken');
+        },
+        addToCart({ commit }, part) {
+            commit('ADD_TO_CART', part);
         },
         fetchUserProfile({ commit }) {
             const token = localStorage.getItem('token');
