@@ -208,7 +208,15 @@ ul > li:before{
     width: 20.5rem;
 }
 
-.sendFormButton:hover, .updateProfileButton:hover {
+.updateInfoButton {
+    background: none;
+    width: 10rem;
+    height: 2.875rem;
+    border: 2px solid #FFC513;
+    transition: .5s;
+}
+
+.sendFormButton:hover, .updateProfileButton:hover, .updateInfoButton:hover {
     transition: .5s;
     cursor: pointer;
     color: white;
@@ -268,7 +276,7 @@ ul > li:before{
     background-color: #393939;
 }
 
-.registrationForm, .loginForm, .resetPasswordForm, .profileForm, .addWorkerForm {
+.registrationForm, .loginForm, .resetPasswordForm, .profileInfo, .addWorkerForm {
     margin: auto;
     width: 53.125rem;
     height: 61.375rem;
@@ -282,15 +290,15 @@ ul > li:before{
     height: 38rem;
 }
 
-.profileForm {
-    height: 49rem;
+.profileInfo {
+    height: 73rem;
 }
 
 .resetPasswordForm {
     height: 46.375rem;
 }
 
-.registrationForm > input, .loginForm > input, .resetPasswordForm > input, .profileForm > input {
+.registrationForm > input, .loginForm > input, .resetPasswordForm > input, .profileForm1 > input, .profileForm2 > input {
     width: 37.5rem;
     border: none;
     border-bottom: 1px solid black;
@@ -445,7 +453,7 @@ body > section.goOnRecord > div > h3.d-f.j-c-c.fs-24px.fw-400.c-w {
     padding-left: 2rem;
 }
 
-.profilePart1 > input, .profilePart2 > input {
+.changeUserInfo > input {
     width: 20.5rem;
     border: none;
     border-bottom: 1px solid black;

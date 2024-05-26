@@ -84,7 +84,7 @@ export default createStore({
                     console.error('Ошибка при загрузке товаров:', error);
                 });
         },
-        fetchCart({ commit, dispatch }) {
+        fetchCart({ commit }) {
             const token = localStorage.getItem('token');
             axios.get('http://localhost/api/cart', {
                 headers: {
@@ -99,7 +99,6 @@ export default createStore({
 
                     const requests = partIds.map(id => axios.get(`http://localhost/api/parts/${id}`));
 
-                    // Выполняем все запросы параллельно
                     Promise.all(requests)
                         .then(responses => {
                             const parts = responses.map(response => response.data);

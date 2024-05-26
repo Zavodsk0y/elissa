@@ -17,7 +17,7 @@
           <button type="submit" class="fs-24px sendLoginForm d-f j-c-c a-i-c mt-5">Войти</button>
           <br><br>
           <p v-if="errorMessage" class="d-f j-c-c error-message fs-28px">{{ errorMessage }}</p>
-          <router-link to="login_vk" class="fs-24px fw-400 loginVk d-f j-c-c a-i-c">Войти через ВКонтакте</router-link>
+          <button @click="linkVkAccount" class="fs-24px fw-400 loginVk d-f j-c-c a-i-c">Войти через ВКонтакте</button>
           <router-link to="/reset_password" class="fs-24px d-f j-c-c mt_1">Забыли пароль?</router-link>
         </form>
 
@@ -53,6 +53,10 @@ export default {
             this.errorMessage = 'Ошибка авторизации. Проверьте логин и пароль.';
             console.log(error);
           });
+    },
+    // не работает из-за проблемы с токеном
+    linkVkAccount() {
+      window.location.href = 'http://localhost/api/auth/vk';
     }
   }
 };

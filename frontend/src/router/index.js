@@ -15,6 +15,7 @@ import EmailVerifiedComponent from "../components/EmailVerifiedComponent.vue";
 import store from "@/store";
 import UserRequestComponent from "@/components/UserRequestComponent.vue";
 import PartsComponent from "@/components/PartsComponent.vue";
+import CallBackComponent from "../components/CallBackComponent.vue";
 
 const ifNotAuthenticated = (to, from, next) => {
   if (!store.getters.isAuthenticated) {
@@ -117,6 +118,11 @@ const routes = [
     name: 'email-verified',
     component: EmailVerifiedComponent,
     beforeEnter: ifAuthenticated,
+  },
+  {
+    path: '/callback',
+    name: 'callback',
+    component: CallBackComponent,
   }
 ]
 

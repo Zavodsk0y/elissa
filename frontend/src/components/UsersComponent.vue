@@ -95,17 +95,6 @@ export default {
             this.errorMessage = 'Ошибка при присвоении роли пользователю';
           });
     },
-    resetForm() {
-      this.newWorker = {
-        surname: '',
-        name: '',
-        patronymic: '',
-        login: '',
-        email: '',
-        password: '',
-        confirmPassword: ''
-      };
-    }
   }
 }
 </script>
