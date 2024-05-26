@@ -15,7 +15,7 @@ class VkontakteAuthenticationController extends Controller
         return RedirectToVkAction::execute();
     }
 
-    public function handleVkCallback(): JsonResponse
+    public function handleVkCallback()
     {
         return HandleVkCallbackAction::execute();
     }

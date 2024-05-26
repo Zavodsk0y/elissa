@@ -8,7 +8,7 @@ use Laravel\Socialite\Facades\Socialite;
 
 class HandleVkCallbackAction
 {
-    public static function execute(): JsonResponse
+    public static function execute()
     {
         $userSocial = Socialite::driver('vkontakte')->stateless()->user();
 
@@ -24,11 +24,11 @@ class HandleVkCallbackAction
 
             $token = $user->createToken('auth')->plainTextToken;
 
-            return response()->json(['token' => $token, 'message' => 'Укажите в настройках свою почту и пароль.'], 200);
+            return redirect()->away(env('APP_URL') . ':8081/callback?token=' . $token);
         }
 
         $token = $user->createToken('auth')->plainTextToken;
 
-        return response()->json(['token' => $token, 'user' => $user], 200);
+        return redirect()->away((env('APP_URL') . ':8081/callback?token=' . $token));
     }
 }
