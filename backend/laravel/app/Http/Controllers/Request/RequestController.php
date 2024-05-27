@@ -34,7 +34,10 @@ class RequestController extends Controller
     {
         $this->authorize('request interaction', Request::class);
 
-        return response()->json(StoreRequestAction::execute(StoreRequestData::fromRequest($request, auth()->user())), 201);
+        $request->request->add(['user_id' => auth()->user()->id]);
+        $data = StoreRequestData::validateAndCreate($request, auth()->user());
+
+        return response()->json(StoreRequestAction::execute($data), 201);
     }
 
     public function destroy(Request $request): JsonResponse
