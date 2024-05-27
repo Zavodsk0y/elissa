@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   nginx:
     image: nginx:latest
@@ -19,7 +17,7 @@ services:
       dockerfile: ./.deploy/local/php/Dockerfile
     volumes:
       - ../../laravel:/app
-    entrypoint: [ "/bin/sh", "-c", "php artisan storage:link && /usr/bin/supervisord -c /etc/supervisor/supervisord.conf" ]
+    entrypoint: [ "/bin/sh", "-c", "/usr/bin/supervisord -c /etc/supervisor/supervisord.conf" ]
     networks:
       - app-network
 
