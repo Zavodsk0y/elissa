@@ -35,7 +35,7 @@ class RequestController extends Controller
         $this->authorize('request interaction', Request::class);
 
         $request->request->add(['user_id' => auth()->user()->id]);
-        $data = StoreRequestData::validateAndCreate($request, auth()->user());
+        $data = StoreRequestData::validateAndCreate($request);
 
         return response()->json(StoreRequestAction::execute($data), 201);
     }
