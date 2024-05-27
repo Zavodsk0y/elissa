@@ -36,13 +36,13 @@ Route::post('/login', LoginUserController::class);
 Route::get('auth/vk', [VkontakteAuthenticationController::class, 'redirectToVk']);
 Route::get('auth/vk/callback', [VkontakteAuthenticationController::class, 'handleVkCallback']);
 
-Route::resource('news', NewsController::class)->only('index', 'show');
+Route::resource('news', NewsController::class)->only(['index', 'show']);
 
-Route::resource('categories', CategoryController::class)->only('index', 'show');
+Route::resource('categories', CategoryController::class)->only(['index', 'show']);
 
-Route::resource('parts', PartController::class)->only('index', 'show');
+Route::resource('parts', PartController::class)->only(['index', 'show']);
 
-Route::resource('/services', ServiceController::class)->only('index, show');
+Route::resource('/services', ServiceController::class)->only(['index', 'show']);
 
 Route::get('/email/verify/{user}/{hash}', [EmailVerificationController::class, 'verify'])
     ->middleware('signed')
@@ -64,7 +64,6 @@ Route::group(['middleware' => ['auth:sanctum', EnsureVerifiedEmail::class]], fun
     Route::patch('/users/info-change', [UpdateUserController::class, 'updateInfo'])->withoutMiddleware(EnsureVerifiedEmail::class);
     Route::patch('/users/password-change', [UpdateUserController::class, 'updatePassword'])->withoutMiddleware(EnsureVerifiedEmail::class);
 
-
     // ABOUT ME
     Route::get('users/me', AbouteMeController::class)->withoutMiddleware(EnsureVerifiedEmail::class);
 
@@ -74,23 +73,23 @@ Route::group(['middleware' => ['auth:sanctum', EnsureVerifiedEmail::class]], fun
     Route::get('/cart', [CartController::class, 'index']);
 
     // NEWS
-    Route::resource('news', NewsController::class)->only('store', 'update', 'destroy');
+    Route::resource('news', NewsController::class)->only(['store', 'update', 'destroy']);
 
     // CATEGORIES
-    Route::resource('categories', CategoryController::class)->only('store', 'update', 'destroy');
+    Route::resource('categories', CategoryController::class)->only(['store', 'update', 'destroy']);
 
     // PARTS
-    Route::resource('parts', PartController::class)->only('store', 'update', 'destroy');
+    Route::resource('parts', PartController::class)->only(['store', 'update', 'destroy']);
 
     // SERVICES
-    Route::resource('services', ServiceController::class)->only('store', 'update', 'destroy');
+    Route::resource('services', ServiceController::class)->only(['store', 'update', 'destroy']);
 
     // REQUESTS
-    Route::resource('requests', RequestController::class)->except('update');
+    Route::resource('requests', RequestController::class)->except(['update']);
     Route::patch('/requests/{request}', UpdateRequestStatusController::class);
 
     // ORDERS
-    Route::resource('orders', OrderController::class)->except('update');
+    Route::resource('orders', OrderController::class)->except(['update']);
     Route::patch('/orders/{order}', UpdateOrderStatusController::class);
 
     // REFERRAL
@@ -100,7 +99,7 @@ Route::group(['middleware' => ['auth:sanctum', EnsureVerifiedEmail::class]], fun
     // ADMIN FUNCTIONAL
     Route::post('users/{user}/assign', AssignEmployeeController::class);
     Route::post('users/{user}/unsign', UnsignEmployeeController::class);
-    Route::resource('users', ShowUsersController::class)->only('index', 'show');
+    Route::resource('users', ShowUsersController::class)->only(['index', 'show']);
     Route::get('users/{user}/cart', GetUserCartConroller::class);
     Route::get('users/{user}/orders', GetUserOrdersController::class);
     Route::get('users/{user}/requests', GetUserRequestsConroller::class);

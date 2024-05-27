@@ -5,6 +5,7 @@ WORKDIR /app
 
 # Обновляем пакеты и устанавливаем необходимые зависимости
 RUN apk update && apk add \
+    supervisor \
     build-base \
     bash \
     curl
@@ -26,6 +27,10 @@ COPY --chown=www-data:www-data ./laravel /app
 
 # Добавляем пользовательские настройки php.ini
 COPY ./.deploy/local/php.ini /usr/local/etc/php/conf.d/40-custom.ini
+
+# Добавляем пользовательские настройки supervisor
+COPY ./.deploy/local/supervisor.ini /etc/supervisor/supervisord.conf
+COPY ./.deploy/local/supervisor.ini /etc/supervisor/conf.d/supervisord.conf
 
 # Очищаем кеш apk и удаляем ненужные файлы
 RUN rm -rf /var/cache/apk/* && docker-php-source delete
