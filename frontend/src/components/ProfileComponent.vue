@@ -176,16 +176,4 @@ export default {
   color: red;
   margin-bottom: 10px;
 }
-
-.linkVkButton {
-  border: none;
-  background: none;
-  color: #002C6F;
-  padding: 0;
-  text-decoration: underline;
-}
-
-.linkVkButton:hover {
-  cursor: pointer;
-}
 </style>
