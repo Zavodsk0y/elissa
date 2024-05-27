@@ -11,6 +11,7 @@ class OrderData extends Data
         public readonly int    $id,
         public readonly string $status,
         public readonly float  $totalAmount,
+        public readonly ?float $referralAmount,
         public readonly array  $items,
     )
     {
@@ -22,6 +23,7 @@ class OrderData extends Data
             $order->id,
             $order->status,
             $order->total_amount,
+            $order->referral_amount ?? null,
             $order->items->map(function ($item) {
                 return [
                     'id' => $item->id,
