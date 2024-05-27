@@ -19,6 +19,7 @@
           <select class="fs-24px c-w" v-model="request.status">
             <option value="Добавлена">Добавлена</option>
             <option value="Подтверждена">Подтверждена</option>
+            <option value="Исполнена">Исполнена</option>
           </select><br><br>
           <button @click="updateStatus(request)" class="updateProfileButton c-w d-f a-i-c j-c-c fs-24px">Сохранить</button>
           <div v-if="successMessage" class="d-f j-c-c success-message fs-28px">{{ successMessage }}</div>

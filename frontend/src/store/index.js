@@ -11,6 +11,7 @@ export default createStore({
     getters: {
         isAuthenticated: (state) => !!state.token,
         isAdmin: (state) => state.userRoles.includes('admin'),
+        isEmployee: (state) => state.userRoles.includes('employee'),
         parts: (state) => state.parts,
         cartItems: (state) => {
             return state.cart.map(cartItem => {

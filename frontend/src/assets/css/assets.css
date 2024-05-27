@@ -53,7 +53,7 @@ footer {
 }
 
 .sendForm {
-    height: 55rem;
+    height: 40rem;
     background-image: url("../img/background-form.png");
 }
 
@@ -66,7 +66,6 @@ footer {
 
 .servicesInfo {
     height: 110rem;
-    background-image: url("../img/service_background_image.png");
 }
 
 .partsInfo {

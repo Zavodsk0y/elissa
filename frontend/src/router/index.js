@@ -9,13 +9,13 @@ import NewsComponent from "@/components/NewsComponent.vue";
 import ProfileComponent from "@/components/ProfileComponent.vue";
 import CartComponent from "@/components/CartComponent.vue";
 import RequestsComponent from "@/components/RequestsComponent.vue";
-import AdminProfileComponent from "@/components/AdminProfileComponent.vue";
 import UsersComponent from "@/components/UsersComponent.vue";
 import EmailVerifiedComponent from "../components/EmailVerifiedComponent.vue";
 import store from "@/store";
 import UserRequestComponent from "@/components/UserRequestComponent.vue";
 import PartsComponent from "@/components/PartsComponent.vue";
 import CallBackComponent from "../components/CallBackComponent.vue";
+import UserOrderComponent from "../components/UserOrderComponent.vue";
 
 const ifNotAuthenticated = (to, from, next) => {
   if (!store.getters.isAuthenticated) {
@@ -31,6 +31,14 @@ const ifAuthenticated = (to, from, next) => {
     return;
   }
   next('/login')
+}
+
+const ifAdmin = (to, from, next) => {
+  if (store.getters.isAdmin) {
+    next();
+    return;
+  }
+  next('/')
 }
 
 const routes = [
@@ -96,12 +104,6 @@ const routes = [
     beforeEnter: ifAuthenticated,
   },
   {
-    path: '/admin_profile',
-    name: 'admin_profile',
-    component: AdminProfileComponent,
-    beforeEnter: ifAuthenticated,
-  },
-  {
     path: '/user_requests',
     name: 'user_requests',
     component: UserRequestComponent,
@@ -111,7 +113,7 @@ const routes = [
     path: '/users',
     name: 'users',
     component: UsersComponent,
-    beforeEnter: ifAuthenticated,
+    beforeEnter: ifAdmin,
   },
   {
     path: '/email-verified',
@@ -123,6 +125,12 @@ const routes = [
     path: '/callback',
     name: 'callback',
     component: CallBackComponent,
+  },
+  {
+    path: '/orders',
+    name: 'orders',
+    component: UserOrderComponent,
+    beforeEnter: ifAuthenticated
   }
 ]
 

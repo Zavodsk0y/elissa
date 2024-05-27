@@ -21,7 +21,7 @@
     gap: 3rem;
 }
 
-.grid_profile {
+.grid_profile, .grid_cart  {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 5rem;

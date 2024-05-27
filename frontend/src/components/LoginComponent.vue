@@ -54,7 +54,6 @@ export default {
             console.log(error);
           });
     },
-    // не работает из-за проблемы с токеном
     linkVkAccount() {
       window.location.href = 'http://localhost/api/auth/vk';
     }

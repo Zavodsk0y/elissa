@@ -24,6 +24,33 @@
         </div>
       </div>
     </section>
+
+    <section class="sendForm mt-3">
+      <div class="wrapper mt-1">
+        <h2 v-if="this.$store.getters.isAuthenticated" class="fs-32px c-w d-f j-c-c pt-2">Хотите оставить заявку? Эта форма - для Вас!</h2>
+        <div v-if="this.$store.getters.isAuthenticated" class="mt_3">
+          <form class="sendRequestForm" @submit.prevent="sendRequest">
+            <h3 class="fs-24px">Форма для записи</h3>
+
+            <label for="chooseService" class="fs-17px">Услуга</label><br><br>
+            <select id="chooseService" v-model="request.service_id" class="fs-17px" required>
+              <option v-for="service in services" :key="service.id" :value="service.id">{{ service.header }}</option>
+            </select><br><br><br>
+
+            <label for="putPhoneNumber" class="fs-17px">Номер телефона</label><br><br>
+            <input id="putPhoneNumber" v-model="request.phone" class="fs-17px" type="tel" placeholder="+79529866500" required><br><br><br>
+
+            <label for="putCouponNumber" class="fs-17px">Номер дружественного купона</label><br><br>
+            <input id="putCouponNumber" v-model="request.referral_code" class="fs-17px" type="text" placeholder="HTSYdM7HlIiTTaFdyAIk"><br><br><br>
+
+            <button type="submit" class="sendFormButton d-f j-c-c a-i-c fs-24px">Отправить</button>
+            <p v-if="successMessage" class="d-f j-c-c success-message fs-28px">{{ successMessage }}</p>
+            <p v-if="errorMessage" class="d-f j-c-c error-message fs-28px">{{ errorMessage }}</p>
+          </form>
+        </div>
+        <h2 v-if="!this.$store.getters.isAuthenticated" class="fs-48px c-w d-f j-c-c t-a-c pt-25">Для того, чтобы оставить заявку, <br> вам необходимо авторизоваться</h2>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -36,6 +63,13 @@ export default {
       services: [],
       currentPage: 1,
       totalPages: 0,
+      request: {
+        service_id: null,
+        phone: '',
+        referral_code: ''
+      },
+      successMessage: '',
+      errorMessage: ''
     };
   },
   mounted() {
@@ -57,6 +91,22 @@ export default {
           })
           .catch(error => {
             console.error('Ошибка при загрузке услуг:', error);
+          });
+    },
+    sendRequest() {
+      const token = localStorage.getItem('token');
+
+      axios.post('http://localhost/api/requests', this.request, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+          .then(() => {
+            this.successMessage = 'Заявка отправлена';
+          })
+          .catch(error => {
+            console.error('Error sending request:', error.response || error);
+            this.errorMessage = 'Ошибка отправки заявки';
           });
     }
   }

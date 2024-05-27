@@ -42,14 +42,17 @@
 
         <br><br><br>
         <div v-if="isAdmin">
-          <router-link class="fs-24px" to="/requests">Заявки пользователей</router-link>
+          <router-link class="fs-24px" to="/requests">Все заявки</router-link>
           <br><br><br><br>
           <router-link class="fs-24px" to="/users">Все пользователи</router-link>
+        </div>
+        <div v-else-if="isEmployee">
+          <router-link class="fs-24px" to="/requests">Все заявки</router-link>
         </div>
         <div v-else>
           <router-link class="fs-24px" to="/cart">Корзина</router-link>
           <br><br><br><br>
-          <router-link class="fs-24px" to="/user_requests">Ваши заявки</router-link>
+          <router-link class="fs-24px" to="/orders">Ваши заказы</router-link>
           <br><br><br><br>
         </div>
       </div>
@@ -80,7 +83,8 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['isAdmin'])
+    ...mapGetters(['isAdmin']),
+    ...mapGetters(['isEmployee'])
   },
   created() {
     this.loadUserProfile();
