@@ -30,6 +30,7 @@
 <script>
 import axios from 'axios';
 import { mapGetters, mapActions } from 'vuex';
+const apiUrl = process.env.VUE_APP_API_BASE_URL;
 
 export default {
   data() {
@@ -58,8 +59,9 @@ export default {
       };
 
       const token = localStorage.getItem('token');
+      const apiUrl = process.env.API_BASE_URL;
 
-      axios.post('http://localhost/api/orders', orderData, {
+      axios.post(`${apiUrl}/orders`, orderData, {
         headers: {
           Authorization: `Bearer ${token}`
         }

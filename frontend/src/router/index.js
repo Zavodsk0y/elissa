@@ -113,7 +113,7 @@ const routes = [
     path: '/users',
     name: 'users',
     component: UsersComponent,
-    beforeEnter: ifAdmin,
+    beforeEnter: ifAuthenticated,
   },
   {
     path: '/email-verified',

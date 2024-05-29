@@ -43,7 +43,7 @@
             <label for="putCouponNumber" class="fs-17px">Номер дружественного купона</label><br><br>
             <input id="putCouponNumber" v-model="request.referral_code" class="fs-17px" type="text" placeholder="HTSYdM7HlIiTTaFdyAIk"><br><br><br>
 
-            <button type="submit" class="sendFormButton d-f j-c-c a-i-c fs-24px">Отправить</button>
+            <button type="submit" class="sendFormButton d-f j-c-c a-i-c fs-24px">Отправить</button><br>
             <p v-if="successMessage" class="d-f j-c-c success-message fs-28px">{{ successMessage }}</p>
             <p v-if="errorMessage" class="d-f j-c-c error-message fs-28px">{{ errorMessage }}</p>
           </form>
@@ -56,6 +56,7 @@
 
 <script>
 import axios from 'axios';
+const apiUrl = process.env.VUE_APP_API_BASE_URL;
 
 export default {
   data() {
@@ -79,7 +80,7 @@ export default {
     fetchServices(page) {
       const token = localStorage.getItem('token');
 
-      axios.get(`http://localhost/api/services?page=${page}&limit=6`, {
+      axios.get(`${apiUrl}/services?page=${page}&limit=6`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -96,7 +97,7 @@ export default {
     sendRequest() {
       const token = localStorage.getItem('token');
 
-      axios.post('http://localhost/api/requests', this.request, {
+      axios.post(`${apiUrl}/requests`, this.request, {
         headers: {
           Authorization: `Bearer ${token}`
         }

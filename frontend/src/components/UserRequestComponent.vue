@@ -22,6 +22,8 @@
 
 <script>
 import axios from 'axios';
+const apiUrl = process.env.VUE_APP_API_BASE_URL;
+
 
 export default {
   data() {
@@ -37,7 +39,7 @@ export default {
     loadUserRequests() {
       const token = localStorage.getItem('token');
       if (token) {
-        axios.get('http://localhost/api/requests', {
+        axios.get(`${apiUrl}/requests`, {
           headers: { Authorization: `Bearer ${token}` }
         })
             .then(response => {

@@ -215,6 +215,7 @@
 </template>
 <script>
 import axios from "axios";
+const apiUrl = process.env.VUE_APP_API_BASE_URL;
 
 export default {
   data() {
@@ -248,7 +249,7 @@ export default {
     sendRequest() {
       const token = localStorage.getItem('token');
 
-      axios.post('http://localhost/api/requests', this.request, {
+      axios.post(`${apiUrl}/requests`, this.request, {
         headers: {
           Authorization: `Bearer ${token}`
         }

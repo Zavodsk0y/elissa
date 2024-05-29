@@ -3,6 +3,8 @@
   <section class="userRequests">
     <div class="wrapper pt-pb-2">
       <h2 class="fs-48px t-a-c c-w">Все заявки</h2>
+      <div v-if="successMessage" class="d-f j-c-c success-message fs-28px">{{ successMessage }}</div>
+      <div v-if="errorMessage" class="d-f j-c-c error-message fs-28px">{{ errorMessage }}</div>
       <div class="grid_userRequest d-f f-d-r j-c-s-b c-w">
         <div class="request" v-for="request in allRequests" :key="request.requestId">
           <h3 class="fs-28px">Номер заявки:</h3>
@@ -12,7 +14,7 @@
           <h3 class="fs-28px">Стоимость:</h3>
           <h3 class="fs-24px fw-400">{{ request.service.price }} ₽</h3>
           <h3 class="fs-28px">Оформил заявку:</h3>
-          <h3 class="fs-24px fw-400">{{ request.userName }}</h3>
+          <h3 class="fs-24px fw-400">{{ request.user_id }}</h3>
           <h3 class="fs-28px">Номер телефона:</h3>
           <h3 class="fs-24px fw-400">{{ request.phone }}</h3>
           <h3 class="fs-28px">Статус:</h3>
@@ -22,8 +24,7 @@
             <option value="Исполнена">Исполнена</option>
           </select><br><br>
           <button @click="updateStatus(request)" class="updateProfileButton c-w d-f a-i-c j-c-c fs-24px">Сохранить</button>
-          <div v-if="successMessage" class="d-f j-c-c success-message fs-28px">{{ successMessage }}</div>
-          <div v-if="errorMessage" class="d-f j-c-c error-message fs-28px">{{ errorMessage }}</div>
+
         </div>
       </div>
 
@@ -34,6 +35,7 @@
 
 <script>
 import axios from 'axios';
+const apiUrl = process.env.VUE_APP_API_BASE_URL;
 
 export default {
   data() {
@@ -50,7 +52,7 @@ export default {
     loadRequests() {
       const token = localStorage.getItem('token');
 
-      axios.get('http://localhost/api/requests', {
+      axios.get(`${apiUrl}/requests`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -66,7 +68,7 @@ export default {
     updateStatus(updatedRequest) {
       const token = localStorage.getItem('token');
 
-      axios.patch(`http://localhost/api/requests/${updatedRequest.id}`, {
+      axios.patch(`${apiUrl}/requests/${updatedRequest.id}`, {
         status: updatedRequest.status
       }, {
         headers: {

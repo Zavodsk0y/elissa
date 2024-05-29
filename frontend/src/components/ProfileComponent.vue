@@ -26,6 +26,8 @@
             <label for="putEmail" class="fs-17px fw-700">Адрес электронной почты</label><br><br>
             <input v-model="formData.email" id="putEmail" class="fs-17px" type="email" required><br><br><br>
             <button type="submit" class="updateInfoButton d-f a-i-c j-c-c fs-24px">Сохранить</button>
+            <p v-if="successMessage" class="d-f j-c-c success-message fs-28px">{{ successMessage }}</p>
+            <p v-if="errorMessage" class="d-f j-c-c error-message fs-28px">{{ errorMessage }}</p>
           </div>
         </form>
 
@@ -36,8 +38,6 @@
           <label for="putPassword2" class="fs-17px fw-700">Повторите пароль</label><br><br>
           <input v-model="formData.password2" id="putPassword2" class="fs-17px" type="password"><br><br><br><br>
           <button type="submit" class="updateInfoButton d-f a-i-c j-c-c fs-24px">Сохранить</button>
-          <p v-if="successMessage" class="d-f j-c-c success-message fs-28px">{{ successMessage }}</p>
-          <p v-if="errorMessage" class="d-f j-c-c error-message fs-28px">{{ errorMessage }}</p>
         </form>
 
         <br><br><br>
@@ -65,6 +65,7 @@
 <script>
 import axios from 'axios';
 import {mapGetters} from 'vuex';
+const apiUrl = process.env.VUE_APP_API_BASE_URL;
 
 export default {
   data() {
@@ -94,7 +95,7 @@ export default {
     loadUserProfile() {
       const token = localStorage.getItem('token');
       if (token) {
-        axios.get('http://localhost/api/users/me', {
+        axios.get(`${apiUrl}/users/me`, {
           headers: {Authorization: `Bearer ${token}`}
         })
             .then(response => {
@@ -119,7 +120,7 @@ export default {
       this.errorMessage = '';
       const token = localStorage.getItem('token');
       if (token) {
-        axios.post('http://localhost/api/users/email-change', {email: this.formData.email}, {
+        axios.post(`${apiUrl}/users/email-change`, {email: this.formData.email}, {
           headers: {Authorization: `Bearer ${token}`}
         })
             .then(() => {
@@ -145,7 +146,7 @@ export default {
 
       const token = localStorage.getItem('token');
       if (token) {
-        axios.post('http://localhost/api/users/password-change', {password: this.formData.password1}, {
+        axios.post(`${apiUrl}/users/password-change`, {password: this.formData.password1}, {
           headers: {Authorization: `Bearer ${token}`}
         })
             .then(() => {

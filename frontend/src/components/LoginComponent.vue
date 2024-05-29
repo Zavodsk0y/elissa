@@ -42,8 +42,10 @@ export default {
   },
   methods: {
     loginRequest() {
+      const apiUrl = process.env.VUE_APP_API_BASE_URL;
+      console.log('API_BASE_URL:', apiUrl);
       axios
-          .post('http://localhost/api/login', this.formData)
+          .post(`${apiUrl}/login`, this.formData)
           .then((response) => {
             localStorage.setItem('token', response.data.token);
             this.$router.push("/");
@@ -55,7 +57,7 @@ export default {
           });
     },
     linkVkAccount() {
-      window.location.href = 'http://localhost/api/auth/vk';
+      window.location.href = `${apiUrl}/auth/vk`;
     }
   }
 };

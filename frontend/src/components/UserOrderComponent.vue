@@ -24,6 +24,7 @@
 
 <script>
 import axios from 'axios';
+const apiUrl = process.env.VUE_APP_API_BASE_URL;
 
 export default {
   data() {
@@ -36,7 +37,7 @@ export default {
       const token = localStorage.getItem('token');
       const user_id = localStorage.getItem('user_id');
 
-      axios.get('http://localhost/api/orders', {
+      axios.get(`${apiUrl}/orders`, {
         headers: {
           Authorization: `Bearer ${token}`
         },

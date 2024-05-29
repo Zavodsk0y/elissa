@@ -3,6 +3,8 @@
     <section class="partsInfo d-f j-c-c">
       <div class="wrapper">
         <h3 class="fs-48px d-f f-d-c a-i-c">Товары</h3>
+        <p v-if="successMessage" class="d-f j-c-c success-message fs-28px">{{ successMessage }}</p>
+        <p v-if="errorMessage" class="d-f j-c-c error-message fs-28px">{{ errorMessage }}</p>
         <div v-if="parts && parts.length > 0" class="parts">
           <div class="grid_parts">
             <div v-for="part in parts" :key="part.id" class="serviceContainer">
@@ -37,6 +39,7 @@
 <script>
 import axios from 'axios';
 import { mapActions } from 'vuex';
+const apiUrl = process.env.VUE_APP_API_BASE_URL;
 
 export default {
   data() {
@@ -45,6 +48,8 @@ export default {
       cartItems: {},
       currentPage: 1,
       totalPages: 0,
+      successMessage: '',
+      errorMessage: ''
     };
   },
   mounted() {
@@ -53,9 +58,10 @@ export default {
   methods: {
     ...mapActions(['addToCart']),
     fetchParts(page) {
+      const apiUrl = process.env.API_BASE_URL;
       const token = localStorage.getItem('token');
 
-      axios.get(`http://localhost/api/parts?page=${page}&limit=6`, {
+      axios.get(`${apiUrl}/parts?page=${page}&limit=6`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -78,10 +84,11 @@ export default {
 
     addToCartClicked(part){
       const token = localStorage.getItem('token');
+      const apiUrl = process.env.API_BASE_URL;
       const quantity = this.cartItems[part.id]?.quantity;
 
       if (quantity > 0 && quantity <= 10) {
-        axios.post(`http://localhost/api/cart/${part.id}`, {
+        axios.post(`${apiUrl}/cart/${part.id}`, {
           partId: part.id,
           quantity: quantity
         }, {
@@ -90,12 +97,14 @@ export default {
           }
         })
             .then(response => {
-              console.log('Товар добавлен в корзину:', response.data);
+              this.successMessage = `Товар добавлен в корзину`;
             })
             .catch(error => {
               console.error('Ошибка при добавлении товара в корзину:', error);
+              this.errorMessage = 'Ошибка при добавлении товара в корзину';
             });
-      } else {
+      }
+      else {
         console.warn('Количество товара должно быть от 1 до 10');
       }
     },

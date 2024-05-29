@@ -32,6 +32,7 @@
 
 <script>
 import axios from "axios";
+const apiUrl = process.env.VUE_APP_API_BASE_URL;
 
 export default {
     data() {
@@ -52,7 +53,7 @@ export default {
     methods: {
         registerUser() {
             axios
-                .post('http://localhost/api/signup', this.formData)
+                .post(`${apiUrl}/signup`, this.formData)
                 .then((response) => console.log(response))
                 .catch((error) => console.log(error))
 
