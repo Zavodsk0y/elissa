@@ -1,21 +1,21 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeComponent from "@/components/HomeComponent.vue";
-import AboutComponent from "@/components/AboutComponent.vue";
-import RegistrationComponent from "@/components/RegistrationComponent.vue";
-import LoginComponent from "@/components/LoginComponent.vue";
-import ResetPasswordComponent from "@/components/ResetPasswordComponent.vue";
-import ServiceComponent from "@/components/ServiceComponent.vue";
-import NewsComponent from "@/components/NewsComponent.vue";
-import ProfileComponent from "@/components/ProfileComponent.vue";
-import CartComponent from "@/components/CartComponent.vue";
-import RequestsComponent from "@/components/RequestsComponent.vue";
-import UsersComponent from "@/components/UsersComponent.vue";
+import HomeComponent from "../components/HomeComponent.vue"
+import AboutComponent from "../components/guest/AboutComponent.vue";
+import RegistrationComponent from "../components/guest/RegistrationComponent.vue";
+import LoginComponent from "../components/guest/LoginComponent.vue";
+import ResetPasswordComponent from "../components/guest/ResetPasswordComponent.vue";
+import ServiceComponent from "../components/guest/ServiceComponent.vue";
+import NewsComponent from "../components/guest/NewsComponent.vue";
+import ProfileComponent from "../components/user/ProfileComponent.vue";
+import CartComponent from "../components/user/CartComponent.vue";
+import RequestsComponent from "../components/employee/RequestsComponent.vue";
+import UsersComponent from "../components/admin/UsersComponent.vue";
 import EmailVerifiedComponent from "../components/EmailVerifiedComponent.vue";
-import store from "@/store";
-import UserRequestComponent from "@/components/UserRequestComponent.vue";
-import PartsComponent from "@/components/PartsComponent.vue";
-import CallBackComponent from "../components/CallBackComponent.vue";
-import UserOrderComponent from "../components/UserOrderComponent.vue";
+import store from "../store";
+import UserRequestComponent from "../components/user/UserRequestComponent.vue";
+import PartsComponent from "../components/guest/PartsComponent.vue";
+import CallBackComponent from "../components/guest/CallBackComponent.vue";
+import UserOrderComponent from "../components/user/UserOrderComponent.vue";
 
 const ifNotAuthenticated = (to, from, next) => {
   if (!store.getters.isAuthenticated) {
@@ -31,14 +31,6 @@ const ifAuthenticated = (to, from, next) => {
     return;
   }
   next('/login')
-}
-
-const ifAdmin = (to, from, next) => {
-  if (store.getters.isAdmin) {
-    next();
-    return;
-  }
-  next('/')
 }
 
 const routes = [
@@ -101,12 +93,6 @@ const routes = [
     path: '/requests',
     name: 'requests',
     component: RequestsComponent,
-    beforeEnter: ifAuthenticated,
-  },
-  {
-    path: '/user_requests',
-    name: 'user_requests',
-    component: UserRequestComponent,
     beforeEnter: ifAuthenticated,
   },
   {

@@ -37,17 +37,17 @@
           </h4>
 
           <h4 class="fs-32px">Jeep Wrangler, 2010</h4>
-          <img src="../assets/img/jeep-wrangler.png" loading="lazy" alt="Нет">
+          <img src="../../assets/img/jeep-wrangler.png" loading="lazy" alt="Нет">
           <h4 class="fs-17px fw-400 lh-2">Король немощеной Америки, Wrangler 2010 года достаточно, чтобы дать любому энтузиасту почувствовать вкус квинтэссенции Jeep на трассах, гравии и скалистой, грязной местности.
             С 2009 по 2011 год существует множество вариантов покупки Wrangler под отметкой в 1.000.000 рублей.</h4>
 
           <h4 class="fs-32px">Mitsubishi Pajero, 1994</h4>
-          <img src="../assets/img/mitsubishi-pajero.png" loading="lazy" alt="Нет">
+          <img src="../../assets/img/mitsubishi-pajero.png" loading="lazy" alt="Нет">
           <h4 class="fs-17px fw-400 lh-2">Mitsubishi Pajero второго поколенияостается в сердцах энтузиастов как классика, а также раллийный 4x4.
             Автомобиль доказал свою ценность как прочный и надежный внедорожник, а ухоженный Pajero должен стоить вам около 1.000.000 рублей.</h4>
 
           <h4 class="fs-32px">Toyota Land Cruiser, 2014</h4>
-          <img src="../assets/img/toyota-land-cruiser.png" loading="lazy" alt="Нет">
+          <img src="../../assets/img/toyota-land-cruiser.png" loading="lazy" alt="Нет">
           <h4 class="fs-17px fw-400 lh-2">Как Land Cruiser мог не быть в этом списке? Независимо от поколения, чрезвычайно мощный и способный внедорожник Toyota всегда был зверем с дороги, и менее чем за 1.000.000 рублей есть некоторые варианты,
             доступныедля тех, кто хочет привезти японский внедорожник в свой гараж.</h4>
 
@@ -73,7 +73,7 @@
         <h2 class="fs-48px">Последние новости</h2>
 
         <div class="news3 d-f">
-          <img src="../assets/img/news-image-3.png" alt="Нет">
+          <img src="../../assets/img/news-image-3.png" alt="Нет">
           <div class="d-f f-d-c">
             <h3 class="news3Title fs-28px fw-400">Самый важный аксессуар в автомобиле</h3>
             <div class="d-f f-d-r j-c-s-b mt_1 ml-2">
@@ -90,7 +90,7 @@
         </div>
 
         <div class="news4 d-f mt_3 mb_2">
-          <img src="../assets/img/news-image-4.png" alt="Нет">
+          <img src="../../assets/img/news-image-4.png" alt="Нет">
           <div class="d-f f-d-c">
             <h3 class="news3Title fs-28px fw-400">Лучшие внедорожники до миллиона рублей - выборка</h3>
             <div class="d-f f-d-r j-c-s-b mt_1 ml-2">

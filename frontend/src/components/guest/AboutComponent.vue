@@ -9,7 +9,7 @@
     <section class="reputation ml-15 mt_3">
         <div class="wrapper">
           <div class="d-f f-d-r">
-            <img src="../assets/img/reputation-image.png" alt="Нет">
+            <img src="../../assets/img/reputation-image.png" alt="Нет">
             <div class="reputationText">
               <h3 class="fs-32px">Репутация <span class="c-y"> 6 лет </span> в сфере <br> технического обслуживания</h3>
 
@@ -48,18 +48,18 @@
     <div class="wrapper">
         <h3 class="fs-32px c-w d-f j-c-c pt-2">3 причины, по которым вы должны выбрать именно нас</h3>
         <div class="d-f f-d-r ml-15">
-          <img class="numberIcon" src="../assets/img/number-1.png" alt="Нет"/>
+          <img class="numberIcon" src="../../assets/img/number-1.png" alt="Нет"/>
           <div class="d-f f-d-c">
               <h3 class="fs-24px fw-400 c-w">Гарантии</h3>
               <h4 class="fs-17px fw-400 c-w">Мы не пользуемся <br> посредниками в сфере <br> поставок.
                 Запчасти и товар мы <br> получаем напрямую у <br> производителей, из-за чего мы <br> можем предоставлять <br> гарантию на наши услуги <br> сроком до двух лет</h4>
           </div>
-          <img class="numberIcon" src="../assets/img/number-2.png" alt="Нет"/>
+          <img class="numberIcon" src="../../assets/img/number-2.png" alt="Нет"/>
           <div class="d-f f-d-c">
             <h3 class="fs-24px fw-400 c-w">Цена</h3>
             <h4 class="fs-17px fw-400 c-w">Еще никогда <br> ремонт в <br> автосервисе не <br> был настолько <br> дешевым, как у нас</h4>
           </div>
-          <img class="numberIcon" src="../assets/img/number-3.png" alt="Нет"/>
+          <img class="numberIcon" src="../../assets/img/number-3.png" alt="Нет"/>
           <div class="d-f f-d-c">
             <h3 class="fs-24px fw-400 c-w">Лояльность</h3>
             <h4 class="fs-17px fw-400 c-w">Наша компания <br> постоянно <br> проводит скидки и <br> акции, что <br> подчеркивает <br> нашу любовь <br> к клиентам</h4>
